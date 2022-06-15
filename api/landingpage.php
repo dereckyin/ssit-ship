@@ -93,11 +93,12 @@ function sendMail($gender, $customer,  $emailinfo, $telinfo, $number, $way) {
     $mail->Subject = "客戶聯絡資訊(Customer Contact) from 盛盛國際有限公司";
     $content = "<p>稱謂(Male/Female)：" . $gender . "</p>";
     $content = $content . "<p>姓名(Name)：" . $customer . "</p>";
+    $content = $content . "<p>貨運方式(Ship Method)：" . ($way == 'air' ? 'air' : 'sea'). "</p>";
     $content = $content . "<p>貨品件數(Piece of Goods)：" . $number . "</p>";
     $content = $content . "<p>電子信箱(Email)：" . $emailinfo . "</p>";
     $content = $content . "<p>連絡電話(Contact Number)：" . $telinfo . "</p>";
     $content = $content . "<p>登記日期(Submitting Time)：" . $datetime->format('Y\-m\-d\ h:i:s') . "</p>";
-    $content = $content . "<p>運送方式(Way)：" . ($way == 'sea' ? '海運' : '空運'). "</p>";
+    
 
     $mail->MsgHTML($content);
     if(!$mail->Send()) {
