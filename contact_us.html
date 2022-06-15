@@ -1,0 +1,641 @@
+<!doctype html>
+<html class="easy-sidebar-active">
+<head>
+
+    <!-- Google Tag Manager -->
+    <script>(function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({
+            'gtm.start':
+                new Date().getTime(), event: 'gtm.js'
+        });
+        var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src =
+            'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-WMGZ27B');</script>
+    <!-- End Google Tag Manager -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>盛盛國際有限公司</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+          integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            text-decoration: none;
+            list-style: none;
+        }
+
+
+        .header {
+            width: 100%;
+            height: 13vh;
+            padding: 0.5em 5em 1em 5em;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-sizing: border-box;
+        }
+
+        .logo {
+            background-color: black;
+            padding: 10px;
+            color: white;
+            font-size: large;
+            font-weight: 700;
+        }
+
+        .logo a {
+            text-decoration: none;
+            color: white;
+        }
+
+        .nav {
+            margin-right: calc(-50px + 10%);
+        }
+
+
+        .nav > ul {
+            margin-bottom: 0;
+            display: flex;
+        }
+
+        .nav > ul > li {
+            font-size: medium;
+            font-weight: 600;
+        }
+
+        .nav > ul > li + li {
+            margin-left: 50px;
+        }
+
+        .nav > ul > li + li:before {
+            content: "｜";
+            margin-right: 50px;
+        }
+
+        .nav a {
+            text-decoration: none;
+            color: black;
+            position: relative;
+        }
+
+        .nav a:hover {
+            color: rgb(23, 162, 184);
+        }
+
+        .nav a:after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            right: 50%;
+            bottom: -8px;
+            height: 0;
+            border-bottom: 1px solid rgb(23, 162, 184);
+            transition: .3s;
+        }
+
+        .nav a:hover:after {
+            left: -10px;
+            right: -10px;
+        }
+
+
+        .content {
+            width: 100%;
+            height: 75vh;
+            display: flex;
+            justify-content: space-around;
+            background: linear-gradient(225deg, rgba(170, 218, 255, 1), rgba(170, 218, 255, 0.2));
+            padding: 10vh 8vw;
+        }
+
+        .left_block {
+            width: 45vw;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .left_block > div.contact_info {
+            background-color: white;
+            box-sizing: border-box;
+            padding: 15px 3vw;
+            font-weight: 600;
+        }
+
+        .left_block > div.contact_info h5 {
+            font-weight: 700;
+        }
+
+        .left_block > div.contact_info span {
+            font-weight: normal;
+        }
+
+        .left_block > div.map {
+            margin-top: 1.5vw;
+            border: 5px solid white;
+            flex-grow: 1;
+            background: url('images/map.png') center center / 100%;
+        }
+
+
+        .right_block {
+            width: 30vw;
+            background-color: white;
+            padding: 20px 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+
+        .right_block h2 {
+            background-color: #555;
+            color: white;
+            text-align: center;
+            font-weight: 700;
+            padding: 7px 0;
+            margin-bottom: 2vh;
+        }
+
+        .right_block form {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+        }
+
+        .right_block form select, .right_block form span {
+            background-color: rgb(242, 242, 242);
+            width: 10vw;
+        }
+
+        .right_block form input {
+            height: calc(1.5em + .75rem + 2px);
+        }
+
+        .right_block form button {
+            width: 20vw;
+            margin-top: 2vh;
+            margin-bottom: 2vh;
+        }
+
+        .footer {
+            height: 12vh;
+            text-align: center;
+            line-height: 12vh;
+
+            box-sizing: border-box;
+        }
+
+        .copyright span + span {
+            margin-left: 5px;
+        }
+
+        .copyright span {
+            font-weight: 700;
+        }
+
+        .info_checkbox {
+            display: none;
+        }
+
+        .info_btnbox {
+            display: inline-block;
+            width: 40px;
+            height: 20px;
+            border-radius: 100px;
+            background-color: rgb(23, 162, 184);
+        }
+
+        .info_btnbox .info_btn {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: white;
+            border: 3px solid rgb(23, 162, 184);
+        }
+
+        .info_checkbox:checked + .info_btnbox .info_btn {
+            margin-left: 20px;
+        }
+
+        #info2 {
+            flex-grow: 1;
+        }
+
+
+        @media only screen and (max-width: 999px) {
+
+            .header {
+                width: 100%;
+                height: 13vh;
+                display: block;
+                padding: 2.5vh 0 1em;
+                box-sizing: border-box;
+            }
+
+            .logo {
+                background-color: black;
+                margin-left: 10vw;
+                padding: 10px;
+                color: white;
+                font-size: large;
+                font-weight: 700;
+            }
+
+            .nav {
+                padding-left: 0;
+            }
+
+            .nav > ul {
+                width: 100%;
+                margin-top: 2.5vh;
+                display: flex;
+                justify-content: space-evenly;
+            }
+
+            .nav > ul > li {
+                font-size: medium;
+                font-weight: 600;
+            }
+
+            .nav > ul > li + li {
+                margin-left: 0;
+            }
+
+            .nav > ul > li + li:before {
+                content: "";
+                margin-right: 0;
+            }
+
+            .nav a {
+                text-decoration: none;
+                color: black;
+                position: relative;
+            }
+
+            .nav a:hover {
+                color: rgb(23, 162, 184);
+            }
+
+            .nav a:after {
+                content: "";
+                position: absolute;
+                left: 50%;
+                right: 50%;
+                bottom: -8px;
+                height: 0;
+                border-bottom: 1px solid rgb(23, 162, 184);
+                transition: .3s;
+            }
+
+            .nav a:hover:after {
+                left: 0;
+                right: 0;
+            }
+
+            .content {
+                justify-content: space-around;
+                padding: 10vh 4vw;
+            }
+
+
+            .left_block > div.map {
+                margin-top: 5vh;
+                margin-bottom: 10vh;
+                background-image: url('images/map.png');
+                background-repeat: no-repeat;
+                background-position: center center;
+                background-size: 150%;
+            }
+
+            .right_block {
+                width: 40vw;
+            }
+
+            .right_block form select, .right_block form span {
+                width: 12vw;
+            }
+
+        }
+
+        @media only screen and (max-width: 767px) {
+
+            .nav {
+                margin-right: 0;
+            }
+
+            .content {
+                height: auto;
+                flex-direction: column;
+                align-items: center;
+                padding: 5vh 4vw;
+                margin-top: 2vh;
+            }
+
+            .left_block {
+                width: 90vw;
+            }
+
+            .left_block > div.map {
+                margin-top: 5vh;
+                margin-bottom: 5vh;
+                height: 30vh;
+                background-image: url('images/map.png');
+                background-repeat: no-repeat;
+                background-position: center center;
+                background-size: 150%;
+            }
+
+            .right_block {
+                width: 90vw;
+            }
+
+            .right_block form select, .right_block form span {
+                width: 28vw;
+            }
+
+            .footer ul {
+                display: flex;
+                justify-content: center;
+                flex-wrap: wrap;
+                margin-bottom: 5px;
+            }
+
+            .footer li + li {
+                margin-left: 0px;
+            }
+
+            #info2 {
+                flex-grow: 0;
+                margin-bottom: 4vh;
+            }
+        }
+
+    </style>
+
+
+</head>
+
+<body>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WMGZ27B"
+            height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+
+<div class="header">
+    <span class="logo"><a href="main.html">盛盛國際有限公司</a></span>
+    <div class="nav">
+        <ul>
+            <li><a href="about_us.html">公司簡介</a></li>
+            <li><a href="services_sea.html">業務範疇</a></li>
+            <li><a href="calculate_fee_sea.html">運費試算</a></li>
+            <li><a href="contact_us.html">聯絡我們</a></li>
+        </ul>
+    </div>
+</div>
+
+<div class="content">
+
+    <div class="left_block">
+
+        <div class="contact_info" id="info1">
+            <h5 style="display: flex; justify-content: space-between;">盛盛國際有限公司
+                <label style="font-size: 14px; margin-bottom: 0;">
+                    <input type="checkbox" name="" id="test1" onchange="change_Location_Info(this)"
+                           class="info_checkbox">
+                    <span class="info_btnbox">
+                        <span class="info_btn"></span>
+                    </span>
+                </label>
+            </h5>
+            台灣辦公室<br>
+            電話： <span><a href="tel:+886-4-7289301">04-728 9301</a></span><br>
+            傳真： <span>04-728 6267</span><br>
+            Email： <span><a href="mailto:jyf_lu@hotmail.com">jyf_lu@hotmail.com</a></span><br>
+            地址： <span><a
+                href="https://www.google.com.tw/maps/place/%E4%B8%AD%E4%BA%9E%E8%8F%B2%E5%9C%8B%E9%9A%9B%E8%B2%BF%E6%98%93%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8/@24.0965996,120.5602978,17z/data=!3m1!4b1!4m5!3m4!1s0x346938d1d860cc1d:0x36ec1ad9a048da65!8m2!3d24.0965996!4d120.5624865?hl=zh-TW&authuser=0">彰化縣彰化市金馬路1段80之1號</a></span>
+        </div>
+
+        <div class="map"></div>
+
+        <div class="contact_info" id="info2" style="display: none;">
+            <h5 style="display: flex; justify-content: space-between;">盛盛國際有限公司
+                <label style="font-size: 14px; margin-bottom: 0;">
+                    <input type="checkbox" name="" id="test2" onchange="change_Location_Info(this)"
+                           class="info_checkbox">
+                    <span class="info_btnbox">
+                        <span class="info_btn"></span>
+                    </span>
+                </label>
+            </h5>
+
+            馬尼拉辦公室<br>
+            電話： <span><a href="tel:+63-2-83635116">02-8363 5116</a>、<a href="tel:+63-2-83341716">02-8334 1716</a></span><br>
+            Email： <span><a href="mailto:servictoryshipment@gmail.com">servictoryshipment@gmail.com</a></span><br>
+            地址： <span>664 7<sup>th</sup> Ave. corner 7<sup>th</sup> St., Kaloocan City, Metro Manila, Philippines</span><br><br>
+
+            宿霧辦公室<br>
+            電話： <span><a href="tel:+63-9177041637">0917 7041637</a> Lester</span><br>
+            Email： <span><a href="mailto:servictoryshipment@gmail.com">servictoryshipment@gmail.com</a></span><br>
+            地址： <span>907 Libo Tayud Consolacion, Cebu, Philippines</span>
+        </div>
+
+    </div>
+
+    <div class="right_block">
+
+        <h2>讓我們聯絡您</h2>
+
+        <form action="/" method="POST" id='login_form' enctype="application/x-www-form-urlencoded">
+
+
+
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <select class="form-control" id="gender" name="gender">
+                        <option value="M">先生</option>
+                        <option value="F">女士</option>
+                    </select>
+                </div>
+                <input type="text" class="form-control" id="customer"
+                       name="customer"
+                       placeholder="姓名" pattern="[a-zA-Z\u4e00-\u9fa5 -]*" required>
+            </div>
+
+            <div class="input-group" style="margin-top:0.5vh;">
+                <div class="input-group-prepend">
+                        <span class="input-group-text">
+                            貨運方式
+                       </span>
+                </div>
+                <select class="form-control" style="background-color: white; padding-left: 8px;" id="way" name="way">
+                        <option value="sea">海運</option>
+                        <option value="air">空運</option>
+                </select>
+            </div>
+
+            <div class="input-group" style="margin-top:0.5vh;">
+                <div class="input-group-prepend">
+                        <span class="input-group-text">
+                            貨品件數
+                       </span>
+                </div>
+                <input type="number" id="number" name="number" class="form-control" min="1" step="1" placeholder="必填"
+                       required>
+            </div>
+
+            <div style="margin-top: 3vh">
+                <div style="font-weight: lighter; padding: 0.1vw" id="description02">您的聯絡方式(至少擇一填寫)
+                </div>
+                <input type="email" class="form-control" style="margin-top:1vh;" id="emailinfo"
+                       name="emailinfo" placeholder="電子信箱">
+
+                <input type="text" class="form-control" style="margin-top: 5px;" id="telinfo"
+                       pattern="[0-9- ]*"
+                       name="telinfo" placeholder="連絡電話">
+
+            </div>
+
+            <div class="text-center">
+                <button type="button" class="btn btn-info" id="submit" name="submit">送出
+                </button>
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<div class="footer">
+
+    <div class="copyright">
+        <span>©</span>
+        <span>2021</span>
+        <span>盛盛國際有限公司</span>
+        <span>版權所有</span>
+    </div>
+
+</div>
+
+
+<script>
+
+    var dataLayer = window.dataLayer || [];
+
+    $(document).on('click', '#submit', function () {
+
+        if (submmitverify() == false)
+            return;
+
+        var unindexed_array = $("#login_form").serializeArray();
+        var indexed_array = {};
+
+        $.map(unindexed_array, function (n, i) {
+            indexed_array[n['name']] = n['value'];
+        });
+
+        // get form data
+        var form_data = JSON.stringify(indexed_array);
+
+        // submit form data to api
+        $.ajax({
+            url: "api/landingpage.php",
+            type: "POST",
+            contentType: 'application/json',
+            data: form_data,
+            success: function (result) {
+
+                // show home page & tell the user it was a successful login
+                dataLayer.push({
+                    "event": "form_submit",
+                    "description": customer
+                });
+
+                // show home page & tell the user it was a successful login
+                alert('我們已收到您的聯絡資訊，我們會盡快聯繫您');
+
+            },
+            error: function (xhr, resp, text) {
+                // on error, tell the user login has failed & empty the input boxes
+                alert(xhr.responseText);
+            }
+        });
+
+        return false;
+    });
+
+    function submmitverify() {
+
+        var customer = $("input[name='customer']").val();
+        var emailinfo = $("input[name='emailinfo']").val();
+        var telinfo = $("input[name='telinfo']").val();
+        var number = $("input[name='number']").val();
+        var error_msg = "";
+
+        if (customer == "") {
+            error_msg = "◇ 請填寫姓名\n";
+        }
+
+        if (number == "") {
+            error_msg = error_msg + "◇ 請填寫貨品件數\n";
+        }
+
+        if (number != "" && number < 1) {
+            error_msg = error_msg + "◇ 請填寫正確的貨品件數\n";
+        }
+
+        if (emailinfo == "" && telinfo == "") {
+            error_msg = error_msg + "◇ 請至少一種聯絡方式";
+        }
+
+        if (error_msg == "") {
+            return true;
+        } else {
+            alert(error_msg);
+            return false;
+        }
+
+    }
+
+    function change_Location_Info(obj_checkbox) {
+        if (obj_checkbox.checked) {
+            document.getElementById("test2").checked = document.getElementById("test1").checked;
+            document.getElementsByClassName("contact_info")[0].style.display = "none";
+            document.getElementsByClassName("map")[0].style.display = "none";
+            document.getElementsByClassName("contact_info")[1].style.display = "";
+        } else {
+            document.getElementById("test1").checked = document.getElementById("test2").checked;
+            document.getElementsByClassName("contact_info")[0].style.display = "";
+            document.getElementsByClassName("map")[0].style.display = "";
+            document.getElementsByClassName("contact_info")[1].style.display = "none";
+        }
+    }
+</script>
+
+
+</body>
+</html>

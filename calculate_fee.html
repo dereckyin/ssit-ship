@@ -1,0 +1,735 @@
+
+<!doctype html>
+<html class="easy-sidebar-active">
+<head>
+
+    <!-- Google Tag Manager -->
+    <script>(function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({
+            'gtm.start':
+                new Date().getTime(), event: 'gtm.js'
+        });
+        var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src =
+            'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-WMGZ27B');</script>
+    <!-- End Google Tag Manager -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>盛盛國際有限公司</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            text-decoration: none;
+            list-style: none;
+        }
+
+
+        .header {
+            width: 100%;
+            height: 13vh;
+            padding: 0.5em 5em 1em 5em;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-sizing: border-box;
+        }
+
+        .logo {
+            background-color: black;
+            padding: 10px;
+            color: white;
+            font-size: large;
+            font-weight: 700;
+        }
+
+        .logo a {
+            text-decoration: none;
+            color: white;
+        }
+
+        .nav {
+            margin-right: calc(-50px + 10%);
+        }
+
+
+        .nav > ul {
+            margin-bottom: 0;
+            display: flex;
+        }
+
+        .nav > ul > li {
+            font-size: medium;
+            font-weight: 600;
+        }
+
+        .nav > ul > li + li {
+            margin-left: 50px;
+        }
+
+        .nav > ul > li + li:before {
+            content: "｜";
+            margin-right: 50px;
+        }
+
+        .nav a {
+            text-decoration: none;
+            color: black;
+            position: relative;
+        }
+
+        .nav a:hover {
+            color: rgb(23, 162, 184);
+        }
+
+        .nav a:after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            right: 50%;
+            bottom: -8px;
+            height: 0;
+            border-bottom: 1px solid rgb(23, 162, 184);
+            transition: .3s;
+        }
+
+        .nav a:hover:after {
+            left: -10px;
+            right: -10px;
+        }
+
+        .content {
+            width: 100%;
+            min-height: 768px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-items: center;
+            background: linear-gradient(225deg, rgba(170, 218, 255, 1), rgba(170, 218, 255, 0.2));
+
+        }
+
+        .upper_block {
+            width: 90%;
+            background-color: white;
+            padding: 15px 0;
+        }
+
+        .upper_block h1 {
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 2vh;
+        }
+
+        .upper_block h5 {
+            text-align: center;
+            margin-top: 0.5vh;
+
+        }
+
+        .fee_table {
+            display: flex;
+            justify-content: space-evenly;
+        }
+
+        .upper_left_table, div.upper_right_table {
+            display: flex;
+        }
+
+        .upper_left_table ul + ul, div.upper_right_table ul + ul {
+            margin-left: 5px;
+        }
+
+        .upper_left_table ul > li:nth-of-type(1), div.upper_right_table ul > li:nth-of-type(1) {
+            background-color: rgb(68, 68, 68);
+            color: white;
+            font-size: large;
+            padding: 20px calc(-49.702px + 5.342vw);
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .upper_left_table ul > li:nth-of-type(2), div.upper_right_table ul > li:nth-of-type(2) {
+            background-color: rgba(170, 218, 255, 0.5);
+            text-align: center;
+            padding: 30px calc(-49.702px + 5.342vw);
+        }
+
+        .lower_block {
+            width: 90%;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .lower_left_block {
+            background-color: white;
+            width: 55%;
+            padding: 15px 20px 15px 40px;
+        }
+
+        .lower_left_block h3 {
+            text-align: center;
+            color: indianred;
+            font-weight: 600;
+        }
+
+        .lower_left_block li {
+            list-style-type: square;
+        }
+
+        .lower_right_block {
+            background-color: white;
+            width: 40%;
+            padding: 15px 0;
+            font-size: larger;
+            display: flex;
+            justify-content: center;
+        }
+
+        .lower_right_block .format {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+        }
+
+        .lower_right_block .format h3 {
+            text-align: center;
+            color: rgb(23, 162, 184);
+            font-weight: 600;
+        }
+
+        .lower_right_block .format > div {
+            margin-top: 10px;
+        }
+
+        .lower_right_block .format > div:nth-of-type(3) {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .lower_right_block #cal_result {
+            font-weight: 700;
+            height: 4rem;
+        }
+
+        .lower_right_block button {
+            font-size: large;
+        }
+
+
+        .footer {
+            height: 12vh;
+            text-align: center;
+            padding: 2.5vh 0;
+            box-sizing: border-box;
+
+        }
+
+        .footer ul {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 5px;
+        }
+
+        .footer a {
+            text-decoration: none;
+        }
+
+        .footer li > a + a {
+            margin-left: 10px;
+        }
+
+        .footer li + li {
+            margin-left: 50px;
+        }
+
+        .copyright span + span {
+            margin-left: 5px;
+        }
+
+        .copyright span {
+            font-weight: 700;
+        }
+
+
+        @media only screen and (max-width: 999px) {
+
+            .header {
+                width: 100%;
+                height: 13vh;
+                display: block;
+                padding: 2.5vh 0 1em;
+                box-sizing: border-box;
+            }
+
+            .logo {
+                background-color: black;
+                margin-left: 10vw;
+                padding: 10px;
+                color: white;
+                font-size: large;
+                font-weight: 700;
+            }
+
+            .nav {
+                padding-left: 0;
+            }
+
+            .nav > ul {
+                width: 100%;
+                margin-top: 2.5vh;
+                display: flex;
+                justify-content: space-evenly;
+            }
+
+            .nav > ul > li {
+                font-size: medium;
+                font-weight: 600;
+            }
+
+            .nav > ul > li + li {
+                margin-left: 0;
+            }
+
+            .nav > ul > li + li:before {
+                content: "";
+                margin-right: 0;
+            }
+
+            .nav a {
+                text-decoration: none;
+                color: black;
+                position: relative;
+            }
+
+            .nav a:hover {
+                color: rgb(23, 162, 184);
+            }
+
+            .nav a:after {
+                content: "";
+                position: absolute;
+                left: 50%;
+                right: 50%;
+                bottom: -8px;
+                height: 0;
+                border-bottom: 1px solid rgb(23, 162, 184);
+                transition: .3s;
+            }
+
+            .nav a:hover:after {
+                left: 0;
+                right: 0;
+            }
+
+            .content {
+                width: 100%;
+                height: auto;
+                padding: 4vh;
+
+            }
+
+            .upper_block h5 {
+                text-align: left;
+                margin: 0.5vh 10vw 0;
+
+            }
+
+            .fee_table {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .upper_left_table {
+                margin-bottom: 1vh;
+            }
+
+            .upper_left_table ul > li:nth-of-type(1), div.upper_right_table ul > li:nth-of-type(1) {
+                padding: 20px 20px;
+            }
+
+            .upper_left_table ul > li:nth-of-type(2), div.upper_right_table ul > li:nth-of-type(2) {
+                padding: 30px 20px;
+            }
+
+            .lower_block {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin-top: 3vh;
+            }
+
+            .lower_left_block {
+                box-sizing: border-box;
+                width: 100%;
+                height: auto;
+                margin-bottom: 3vh;
+            }
+
+            .lower_right_block {
+                width: 60%;
+            }
+
+        }
+
+
+        @media only screen and (max-width: 767px) {
+
+            .content {
+                width: 100%;
+                height: auto;
+                margin-top: 2vh;
+                padding: 4vh 2vh;
+
+            }
+
+            .upper_block h1 {
+                margin-left: -2rem;
+            }
+
+            .upper_block h5 {
+                text-align: center;
+                margin-top: 1.5vh;
+
+            }
+
+            .upper_left_table {
+                margin-bottom: 10vh;
+            }
+
+            .upper_left_table, .upper_right_table {
+                flex-direction: column;
+                width: 80%;
+            }
+
+            .upper_left_table ul, .upper_right_table ul {
+                margin-bottom: 0;
+            }
+
+            .lower_block {
+                margin-top: 4vh;
+            }
+
+            .lower_left_block {
+                margin-bottom: 4vh;
+            }
+
+            .lower_left_block h3 {
+                margin-left: -20px;
+            }
+
+
+            .lower_right_block {
+                width: 100%;
+            }
+
+            .lower_right_block input[type="text"] {
+                width: 200px;
+            }
+
+            .footer ul {
+                display: flex;
+                justify-content: center;
+                flex-wrap: wrap;
+                margin-bottom: 5px;
+            }
+
+            .footer li + li {
+                margin-left: 0px;
+            }
+        }
+
+    </style>
+
+
+</head>
+
+<body>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WMGZ27B"
+            height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+
+
+<div class="header">
+    <span class="logo"><a href="main.html">盛盛國際有限公司</a></span>
+    <div class="nav">
+        <ul>
+            <li><a href="about_us.html">公司簡介</a></li>
+            <li><a href="services.html">業務範疇</a></li>
+            <li><a href="calculate_fee.html">運費試算</a></li>
+            <li><a href="contact_us.html">聯絡我們</a></li>
+        </ul>
+    </div>
+</div>
+
+
+<style>
+
+
+
+
+</style>
+
+
+<div class="content">
+
+    <div class="upper_block">
+
+        <h1>&nbsp;&nbsp;&nbsp;運費計價方式</h1>
+
+        <div class="fee_table">
+
+            <div class="upper_left_table">
+
+                <ul>
+                    <li>
+                        重量 ＜ 55公斤
+                    </li>
+                    <li>
+                        運費<br>PHP 2,000
+                    </li>
+                </ul>
+
+                <ul>
+                    <li>
+                        重量 ＜ 3,000公斤
+                    </li>
+                    <li>
+                        運費<br>每公斤 PHP 36.5
+                    </li>
+                </ul>
+
+                <ul>
+                    <li>
+                        重量 ≧ 3,000公斤
+                    </li>
+                    <li>
+                        運費<br>每公斤 PHP 34.5
+                    </li>
+                </ul>
+
+            </div>
+
+            <div class="upper_right_table">
+
+                <ul>
+                    <li>
+                        體積 ＜ 5.5才積
+                    </li>
+                    <li>
+                        運費<br>PHP 2,000
+                    </li>
+                </ul>
+
+                <ul>
+                    <li>
+                        體積 ＜ 300才積
+                    </li>
+                    <li>
+                        運費<br>每才積 PHP 385
+                    </li>
+                </ul>
+
+                <ul>
+                    <li>
+                        體積 ≧ 300才積
+                    </li>
+                    <li>
+                        運費<br>每才積 PHP 365
+                    </li>
+                </ul>
+
+            </div>
+
+        </div>
+
+        <h5> ※ 1才積未滿10公斤者以才積計算。1才積 ＝ 長(英吋) × 寬(英吋) × 高(英吋) ÷ 1728</h5>
+
+    </div>
+
+    <div class="lower_block">
+
+        <div class="lower_left_block">
+            <h3>貨物託運辦法</h3>
+            <ul>
+                <li>貨物託運需同時檢附品名及相關資料，並在貨物上清楚註明『寄貨人』及『收貨人中、英文姓名、電話』，否則不承擔遺失風險。
+                </li>
+                <li>貨物抵達目的地後若超過二個月未前來領取貨物，將視放棄貨物所有權。</li>
+                <li>
+                    在委託本公司託運時，尤其是『危險品或化學品、液體、農藥』，務必請台灣廠商提供完整資料(正確品名、危險品申報書或物質成分表等)，以利台灣海關申報手續及安全擺放至貨櫃。若未據實申報而發生任何問題，致使貨
+                    櫃延誤或遭海關罰款，依法律及相關責任將由託運客戶承擔。
+                </li>
+            </ul>
+        </div>
+
+        <div class="lower_right_block">
+
+            <div class="format">
+
+                <h3>線上運費試算</h3>
+
+                <div>重量：<input type="text" placeholder="單位為公斤" id="weight"></div>
+
+                <div>體積：<input type="text" placeholder="單位為才積" id="volume"></div>
+
+                <div>
+                    <span style="display: none;"><input type="checkbox" checked id="restriction">納入最低運費條件</span>
+                    <button class="btn btn-info" id="calculate">試算</button>
+                </div>
+
+                <div id="cal_result">運費金額粗估為</div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<div class="footer">
+   <ul>
+       <li>
+           <i class="fas fa-phone-volume"></i>
+           <a href="tel:+886-4-7289301">04-728 9301</a>
+       </li>
+
+       <li>
+           <i class="fas fa-map-marker-alt"></i>
+           <a href="https://www.google.com.tw/maps/place/%E4%B8%AD%E4%BA%9E%E8%8F%B2%E5%9C%8B%E9%9A%9B%E8%B2%BF%E6%98%93%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8/@24.0965996,120.5602978,17z/data=!3m1!4b1!4m5!3m4!1s0x346938d1d860cc1d:0x36ec1ad9a048da65!8m2!3d24.0965996!4d120.5624865?hl=zh-TW&authuser=0">彰化縣彰化市金馬路1段80之1號</a><br>
+       </li>
+   </ul>
+
+       <div class="copyright">
+           <span>©</span>
+           <span>2021</span>
+           <span>盛盛國際有限公司</span>
+           <span>版權所有</span>
+       </div>
+
+</div>
+
+
+<script>
+
+    var dataLayer = window.dataLayer || [];
+
+    $(document).on('click', '#calculate', function () {
+
+        var weight = parseFloat(document.getElementById("weight").value);
+        var volume = parseFloat(document.getElementById("volume").value);
+        var fee = 0.00;
+
+
+        if (isNaN(weight)) {
+
+            if (isNaN(volume)) {
+                alert("重量和體積必須為數字!!")
+            } else {
+                if (volume < 300) {
+                    fee = volume * 385;
+                } else {
+                    fee = volume * 365;
+                }
+
+                if (document.getElementById("restriction").checked) {
+                    if (fee < 2000) {
+                        fee = 2000;
+                    }
+                }
+                document.getElementById("cal_result").innerHTML = "運費金額粗估為 PHP " + FormatNumber(fee) + "<br><span style='color: red;'>(實際收費金額以現場丈量為主)</span>";
+            }
+        } else {
+
+            if (isNaN(volume)) {
+                if (weight < 3000) {
+                    fee = weight * 36.5;
+                } else {
+                    fee = weight * 34.5;
+                }
+
+                if (document.getElementById("restriction").checked) {
+                    if (fee < 2000) {
+                        fee = 2000;
+                    }
+                }
+                document.getElementById("cal_result").innerHTML = "運費金額粗估為 PHP " + FormatNumber(fee) + "<br><span style='color: red;'>(實際收費金額以現場丈量為主)</span>";
+            } else {
+
+                var fee1 = 0.00;
+                var fee2 = 0.00;
+
+                if (volume < 300) {
+                    fee1 = volume * 385;
+                } else {
+                    fee1 = volume * 365;
+                }
+
+                if (weight < 3000) {
+                    fee2 = weight * 36.5;
+                } else {
+                    fee2 = weight * 34.5;
+                }
+
+                if (fee1 > fee2) {
+                    fee = fee1;
+                } else {
+                    fee = fee2;
+                }
+
+                if (document.getElementById("restriction").checked) {
+                    if (fee < 2000) {
+                        fee = 2000;
+                    }
+                }
+                document.getElementById("cal_result").innerHTML = "運費金額粗估為 PHP " + FormatNumber(fee) + "<br><span style='color: red;'>(實際收費金額以現場丈量為主)</span>";
+            }
+
+        }
+
+        dataLayer.push({
+            "event": "fee_calculate",
+            "fee": fee
+        });
+    });
+
+
+    function FormatNumber(n) {
+        n = Math.round(n * 100) / 100;
+        n += "";
+        var arr = n.split(".");
+        var re = /(\d{1,3})(?=(\d{3})+$)/g;
+        return arr[0].replace(re, "$1,") + (arr.length == 2 ? "." + arr[1] : "");
+    }
+
+
+</script>
+
+
+
+</body>
+</html>

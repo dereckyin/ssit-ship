@@ -21,3 +21,10 @@ Homestead.yaml
 Homestead.json
 /.vagrant
 .phpunit.result.cache
+conf.inc  
+**/config  
+**/libs
+schema.sql
+node_modules
+/PHPMailer-master
+/.well-known
