@@ -28,3 +28,4 @@ schema.sql
 node_modules
 /PHPMailer-master
 /.well-known
+/module
