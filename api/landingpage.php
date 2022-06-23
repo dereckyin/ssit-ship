@@ -86,6 +86,9 @@ function sendMail($gender, $customer,  $emailinfo, $telinfo, $number, $way) {
     $mail->IsHTML(true);
     $mail->AddAddress("jyf_lu@hotmail.com", "jyf_lu");
     $mail->AddAddress("servictoryshipment@gmail.com", "JYF System");
+
+    if($way == 'air')
+        $mail->AddAddress("kuan@feliix.com", "Kuan");
     
     $mail->SetFrom("servictoryshipment@gmail.com", "JYF System");
     $mail->AddReplyTo("servictoryshipment@gmail.com", "JYF System");
