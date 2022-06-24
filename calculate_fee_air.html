@@ -582,7 +582,7 @@
         </div>
 
         <h5> ※ 重量計費、體積計費，兩者取較大者收費<br>
-             ※ 最低寄貨量 150 公斤</h5>
+             ※ 最低寄貨量 100 公斤</h5>
 
     </div>
 
@@ -662,9 +662,9 @@
                 document.getElementById("cal_result").innerHTML = "<span style='color: red;'>至少輸入一個數字到重量或體積欄位!</span>";
                 //alert("重量和體積必須為數字!!")
             } else {
-                if (volume/6000 < 150) {
-                    //未達到最低寄貨量150kg
-                    document.getElementById("cal_result").innerHTML = "尚未達到最低寄貨量 <span style='color: red;'>150</span> 公斤<br>才積換算公斤公式：才積 ÷ 6000";
+                if (volume/6000 < 100) {
+                    //未達到最低寄貨量100kg
+                    document.getElementById("cal_result").innerHTML = "尚未達到最低寄貨量 <span style='color: red;'>100</span> 公斤<br>才積換算公斤公式：才積 ÷ 6000";
                 } else {
                     fee = volume / 6000 * 395;
                     document.getElementById("cal_result").innerHTML = "運費金額粗估為  " + FormatNumber(fee) + "  台幣<br><span style='color: red;'> (實際收費金額以現場丈量為主)</span>";
@@ -673,9 +673,9 @@
         } else {
 
             if (isNaN(volume)) {
-                if (weight < 150) {
-                    //未達到最低寄貨量150kg
-                    document.getElementById("cal_result").innerHTML = "尚未達到最低寄貨量 <span style='color: red;'>150</span> 公斤<br>才積換算公斤公式：才積 ÷ 6000";
+                if (weight < 100) {
+                    //未達到最低寄貨量100kg
+                    document.getElementById("cal_result").innerHTML = "尚未達到最低寄貨量 <span style='color: red;'>100</span> 公斤<br>才積換算公斤公式：才積 ÷ 6000";
                 } else {
                     fee = weight * 395;
                     document.getElementById("cal_result").innerHTML = "運費金額粗估為  " + FormatNumber(fee) + "  台幣<br><span style='color: red;'> (實際收費金額以現場丈量為主)</span>";
@@ -685,9 +685,9 @@
                 var fee1 = 0.00;
                 var fee2 = 0.00;
 
-                if (volume/6000 < 150 && weight < 150) {
-                    //未達到最低寄貨量150kg
-                    document.getElementById("cal_result").innerHTML = "尚未達到最低寄貨量 <span style='color: red;'>150</span> 公斤<br>才積換算公斤公式：才積 ÷ 6000";
+                if (volume/6000 < 100 && weight < 100) {
+                    //未達到最低寄貨量100kg
+                    document.getElementById("cal_result").innerHTML = "尚未達到最低寄貨量 <span style='color: red;'>100</span> 公斤<br>才積換算公斤公式：才積 ÷ 6000";
                 } else {
                     fee1 = volume/6000 * 395;
                     fee2 = weight * 395;
