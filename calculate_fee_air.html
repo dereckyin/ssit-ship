@@ -557,10 +557,10 @@
 
                 <ul>
                     <li>
-                        重量計費
+                        重量計價
                     </li>
                     <li>
-                        運費<br>(貨物總公斤數 × 395) 台幣
+                        (貨物總公斤數 × 550) 元台幣
                     </li>
                 </ul>
 
@@ -570,10 +570,10 @@
 
                 <ul>
                     <li>
-                        體積計費
+                        體積計價
                     </li>
                     <li>
-                        運費<br>(貨物總才積數 ÷ 6000 × 395) 台幣
+                        (貨物總立方公分 ÷ 6000 × 550) 元台幣
                     </li>
                 </ul>
 
@@ -581,8 +581,8 @@
 
         </div>
 
-        <h5> ※ 重量計費、體積計費，兩者取較大者收費<br>
-             ※ 最低寄貨量 100 公斤</h5>
+        <h5> ※ 重量計價、體積計價，兩者取較大者收費<br>
+             <span style="color: red">※ 寄貨量 100 公斤以上者，另有優惠</span></h5>
 
     </div>
 
@@ -592,7 +592,7 @@
             <h3>貨物託運辦法</h3>
             <ul>
                 <li>航空公司不收裸裝，棧板和⽊箱要需煙燻，⼀般紙箱包裝可以，如果是易碎品怕碰撞的建議訂⽊箱。(若有疑慮，麻煩先提供包裝後照⽚做確認)</li>
-                <li>長寬⾼限制：不超過長度 300cm，寬度 300cm，⾼度 150cm。</li>
+                <li>長寬⾼限制：不超過長度 300公分，寬度 300公分，⾼度 150公分。</li>
                 <li>⽊箱或棧板，單件重量不超過 800 公斤。</li>
                 <li>預約時要提供：(1)包裝⽅式(紙箱、⽊箱或棧板)；(2)包裝後尺⼨；(3)包裝後的總重；(4)報關⽂件，Packing list & Invoice。</li>
             </ul>
@@ -606,7 +606,7 @@
 
                 <div>重量：<input type="text" placeholder="單位為公斤" id="weight"></div>
 
-                <div>體積：<input type="text" placeholder="單位為才積" id="volume"></div>
+                <div>體積：<input type="text" placeholder="單位為立方公分" id="volume"></div>
 
                 <div>
                     <span style="display: none;"><input type="checkbox" checked id="restriction">納入最低運費條件</span>
@@ -662,45 +662,30 @@
                 document.getElementById("cal_result").innerHTML = "<span style='color: red;'>至少輸入一個數字到重量或體積欄位!</span>";
                 //alert("重量和體積必須為數字!!")
             } else {
-                if (volume/6000 < 100) {
-                    //未達到最低寄貨量100kg
-                    document.getElementById("cal_result").innerHTML = "尚未達到最低寄貨量 <span style='color: red;'>100</span> 公斤<br>才積換算公斤公式：才積 ÷ 6000";
-                } else {
-                    fee = volume / 6000 * 395;
-                    document.getElementById("cal_result").innerHTML = "運費金額粗估為  " + FormatNumber(fee) + "  台幣<br><span style='color: red;'> (實際收費金額以現場丈量為主)</span>";
-                }
+                fee = volume / 6000 * 550;
+                document.getElementById("cal_result").innerHTML = "運費金額粗估為 台幣" + FormatNumber(fee) + "元<br><span style='color: red;'> (實際收費金額以現場丈量為主)</span>";
             }
         } else {
 
             if (isNaN(volume)) {
-                if (weight < 100) {
-                    //未達到最低寄貨量100kg
-                    document.getElementById("cal_result").innerHTML = "尚未達到最低寄貨量 <span style='color: red;'>100</span> 公斤<br>才積換算公斤公式：才積 ÷ 6000";
-                } else {
-                    fee = weight * 395;
-                    document.getElementById("cal_result").innerHTML = "運費金額粗估為  " + FormatNumber(fee) + "  台幣<br><span style='color: red;'> (實際收費金額以現場丈量為主)</span>";
-                }
+                fee = weight * 550;
+                document.getElementById("cal_result").innerHTML = "運費金額粗估為 台幣" + FormatNumber(fee) + "元<br><span style='color: red;'> (實際收費金額以現場丈量為主)</span>";
             } else {
 
                 var fee1 = 0.00;
                 var fee2 = 0.00;
 
-                if (volume/6000 < 100 && weight < 100) {
-                    //未達到最低寄貨量100kg
-                    document.getElementById("cal_result").innerHTML = "尚未達到最低寄貨量 <span style='color: red;'>100</span> 公斤<br>才積換算公斤公式：才積 ÷ 6000";
+
+                fee1 = volume/6000 * 550;
+                fee2 = weight * 550;
+
+                if (fee1 > fee2) {
+                    fee = fee1;
                 } else {
-                    fee1 = volume/6000 * 395;
-                    fee2 = weight * 395;
-
-                    if (fee1 > fee2) {
-                        fee = fee1;
-                    } else {
-                        fee = fee2;
-                    }
-
-                    document.getElementById("cal_result").innerHTML = "運費金額粗估為  " + FormatNumber(fee) + "  台幣<br><span style='color: red;'> (實際收費金額以現場丈量為主)</span>";
-
+                    fee = fee2;
                 }
+
+                document.getElementById("cal_result").innerHTML = "運費金額粗估為 台幣" + FormatNumber(fee) + "元<br><span style='color: red;'> (實際收費金額以現場丈量為主)</span>";
 
             }
         }

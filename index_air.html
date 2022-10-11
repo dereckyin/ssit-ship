@@ -445,7 +445,7 @@
                     <a id="link_air">【<span style="font-weight: 100;">空運</span>】</a>
                 </nav>
                 <h4 id="description1">還在為 Covid-19 造成的船期延誤而煩惱嗎? &nbsp;&nbsp; 空運幫您趕上交期</h4>
-                <h6 id="description2">最低寄貨量 100 公斤，每公⽄ 395 元台幣 (運費已含清關、大馬尼拉送貨到府費用)</h6>
+                <h6 id="description2">寄貨量未達 100 公斤者，每公⽄ 550 元台幣；寄貨量 100 公斤以上者，另有優惠<br>(運費已含清關、大馬尼拉送貨到府費用)</h6>
 
 
                 <div class="fee-calculator">
@@ -456,7 +456,7 @@
                         </li>
                         <li>
                             <label for="volume">體積：</label>
-                            <input type="text" placeholder="單位為才積" id="volume">
+                            <input type="text" placeholder="單位為立方公分" id="volume">
                         </li>
                         <li>
                             <button class="btn btn-info btn-sm" id="calculate_sea" style="display: none;">試算</button>
@@ -678,7 +678,8 @@
         document.getElementById("link_sea").getElementsByTagName('span')[0].style.fontWeight = '600';
         document.getElementById("link_air").getElementsByTagName('span')[0].style.fontWeight = '100';
         document.getElementById("description1").innerHTML = '週週出貨櫃，21年海運經驗';
-        document.getElementById("description2").innerHTML = '運費最低 2,000 菲幣起';
+        document.getElementById("description2").innerHTML = '運費最低 2,000 台幣起';
+        document.getElementById("volume").placeholder = '單位為才積';
         document.getElementById("calculate_sea").style.display = 'block';
         document.getElementById("calculate_air").style.display = 'none';
         document.getElementById("submit_sea").style.display = 'inline-block';
@@ -699,7 +700,8 @@
         document.getElementById("link_sea").getElementsByTagName('span')[0].style.fontWeight = '100';
         document.getElementById("link_air").getElementsByTagName('span')[0].style.fontWeight = '600';
         document.getElementById("description1").innerHTML = '還在為 Covid-19 造成的船期延誤而煩惱嗎? &nbsp;&nbsp; 空運幫您趕上交期';
-        document.getElementById("description2").innerHTML = '最低寄貨量 100 公斤，每公⽄ 395 元台幣 (運費已含清關、大馬尼拉送貨到府費用)';
+        document.getElementById("description2").innerHTML = '寄貨量未達 100 公斤者，每公⽄ 550 元台幣；寄貨量 100 公斤以上者，另有優惠<br>(運費已含清關、大馬尼拉送貨到府費用)';
+        document.getElementById("volume").placeholder = '單位為立方公分';
         document.getElementById("calculate_sea").style.display = 'none';
         document.getElementById("calculate_air").style.display = 'block';
         document.getElementById("submit_sea").style.display = 'none';
@@ -730,46 +732,46 @@
                 //alert("重量和體積必須為數字!!")
             } else {
                 if (volume < 300) {
-                    fee = volume * 385;
+                    fee = volume * 260;
                 } else {
-                    fee = volume * 365;
+                    fee = volume * 260;
                 }
 
                 if (fee < 2000) {
                     fee = 2000;
                 }
 
-                document.getElementById("cal_result").innerHTML = "運費金額粗估為  " + FormatNumber(fee) + "  菲幣 <span style='color: red;'> (實際收費金額以現場丈量為主)</span>";
+                document.getElementById("cal_result").innerHTML = "運費金額粗估為 台幣" + FormatNumber(fee) + "元 <span style='color: red;'> (實際收費金額以現場丈量為主)</span>";
             }
         } else {
 
             if (isNaN(volume)) {
                 if (weight < 3000) {
-                    fee = weight * 36.5;
+                    fee = weight * 25;
                 } else {
-                    fee = weight * 34.5;
+                    fee = weight * 25;
                 }
 
                 if (fee < 2000) {
                     fee = 2000;
                 }
 
-                document.getElementById("cal_result").innerHTML = "運費金額粗估為  " + FormatNumber(fee) + "  菲幣 <span style='color: red;'> (實際收費金額以現場丈量為主)</span>";
+                document.getElementById("cal_result").innerHTML = "運費金額粗估為 台幣" + FormatNumber(fee) + "元 <span style='color: red;'> (實際收費金額以現場丈量為主)</span>";
             } else {
 
                 var fee1 = 0.00;
                 var fee2 = 0.00;
 
                 if (volume < 300) {
-                    fee1 = volume * 385;
+                    fee1 = volume * 260;
                 } else {
-                    fee1 = volume * 365;
+                    fee1 = volume * 260;
                 }
 
                 if (weight < 3000) {
-                    fee2 = weight * 36.5;
+                    fee2 = weight * 25;
                 } else {
-                    fee2 = weight * 34.5;
+                    fee2 = weight * 25;
                 }
 
                 if (fee1 > fee2) {
@@ -782,7 +784,7 @@
                     fee = 2000;
                 }
 
-                document.getElementById("cal_result").innerHTML = "運費金額粗估為  " + FormatNumber(fee) + "  菲幣 <span style='color: red;'> (實際收費金額以現場丈量為主)</span>";
+                document.getElementById("cal_result").innerHTML = "運費金額粗估為 台幣" + FormatNumber(fee) + "元 <span style='color: red;'> (實際收費金額以現場丈量為主)</span>";
             }
 
         }
@@ -808,45 +810,33 @@
                 document.getElementById("cal_result").innerHTML = "<span style='color: red;'>至少輸入一個數字到重量或體積欄位!</span>";
                 //alert("重量和體積必須為數字!!")
             } else {
-                if (volume/6000 < 100) {
-                    //未達到最低寄貨量100kg
-                    document.getElementById("cal_result").innerHTML = "尚未達到最低寄貨量 <span style='color: red;'>100</span> 公斤，才積換算公斤的公式：才積 ÷ 6000。";
-                } else {
-                    fee = volume / 6000 * 395;
-                    document.getElementById("cal_result").innerHTML = "運費金額粗估為  " + FormatNumber(fee) + "  台幣 <span style='color: red;'> (實際收費金額以現場丈量為主)</span>";
-                }
+
+                fee = volume / 6000 * 550;
+                document.getElementById("cal_result").innerHTML = "運費金額粗估為 台幣" + FormatNumber(fee) + "元 <span style='color: red;'> (實際收費金額以現場丈量為主)</span>";
+
             }
         } else {
 
             if (isNaN(volume)) {
-                if (weight < 100) {
-                    //未達到最低寄貨量100kg
-                    document.getElementById("cal_result").innerHTML = "尚未達到最低寄貨量 <span style='color: red;'>100</span> 公斤，才積換算公斤的公式：才積 ÷ 6000。";
-                } else {
-                    fee = weight * 395;
-                    document.getElementById("cal_result").innerHTML = "運費金額粗估為  " + FormatNumber(fee) + "  台幣 <span style='color: red;'> (實際收費金額以現場丈量為主)</span>";
-                }
+
+                fee = weight * 550;
+                document.getElementById("cal_result").innerHTML = "運費金額粗估為 台幣" + FormatNumber(fee) + "元 <span style='color: red;'> (實際收費金額以現場丈量為主)</span>";
+
             } else {
 
                 var fee1 = 0.00;
                 var fee2 = 0.00;
 
-                if (volume/6000 < 100 && weight < 100) {
-                    //未達到最低寄貨量100kg
-                    document.getElementById("cal_result").innerHTML = "尚未達到最低寄貨量 <span style='color: red;'>100</span> 公斤，才積換算公斤的公式：才積 ÷ 6000。";
+                fee1 = volume/6000 * 550;
+                fee2 = weight * 550;
+
+                if (fee1 > fee2) {
+                    fee = fee1;
                 } else {
-                    fee1 = volume/6000 * 395;
-                    fee2 = weight * 395;
-
-                    if (fee1 > fee2) {
-                        fee = fee1;
-                    } else {
-                        fee = fee2;
-                    }
-
-                    document.getElementById("cal_result").innerHTML = "運費金額粗估為  " + FormatNumber(fee) + "  台幣 <span style='color: red;'> (實際收費金額以現場丈量為主)</span>";
-
+                    fee = fee2;
                 }
+
+                document.getElementById("cal_result").innerHTML = "運費金額粗估為 台幣" + FormatNumber(fee) + "元 <span style='color: red;'> (實際收費金額以現場丈量為主)</span>";
 
             }
         }

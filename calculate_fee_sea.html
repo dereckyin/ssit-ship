@@ -167,9 +167,9 @@
             margin-bottom: 2vh;
         }
 
-        .upper_block h5 {
+        .upper_block h6 {
             text-align: center;
-            margin-top: 0.5vh;
+            margin-top: 10px;
 
         }
 
@@ -448,7 +448,7 @@
             }
 
             .upper_left_table {
-                margin-bottom: 10vh;
+                margin-bottom: 30px;
             }
 
             .upper_left_table, .upper_right_table {
@@ -554,28 +554,10 @@
 
                 <ul>
                     <li>
-                        重量 ＜ 55公斤
+                        重量計價
                     </li>
                     <li>
-                        運費<br>PHP 2,000
-                    </li>
-                </ul>
-
-                <ul>
-                    <li>
-                        重量 ＜ 3,000公斤
-                    </li>
-                    <li>
-                        運費<br>每公斤 PHP 36.5
-                    </li>
-                </ul>
-
-                <ul>
-                    <li>
-                        重量 ≧ 3,000公斤
-                    </li>
-                    <li>
-                        運費<br>每公斤 PHP 34.5
+                        每公斤 台幣25元
                     </li>
                 </ul>
 
@@ -585,28 +567,10 @@
 
                 <ul>
                     <li>
-                        體積 ＜ 5.5才積
+                        體積計價
                     </li>
                     <li>
-                        運費<br>PHP 2,000
-                    </li>
-                </ul>
-
-                <ul>
-                    <li>
-                        體積 ＜ 300才積
-                    </li>
-                    <li>
-                        運費<br>每才積 PHP 385
-                    </li>
-                </ul>
-
-                <ul>
-                    <li>
-                        體積 ≧ 300才積
-                    </li>
-                    <li>
-                        運費<br>每才積 PHP 365
+                        每才積 台幣260元
                     </li>
                 </ul>
 
@@ -614,7 +578,11 @@
 
         </div>
 
-        <h5> ※ 體積為1才積但未滿10公斤者，以才積計算。<br>※ 1才積 ＝ 長(英吋) × 寬(英吋) × 高(英吋) ÷ 1728</h5>
+        <h6>※ 體積為1才積但未滿10公斤者，以才積計價。<br>※ 體積(單位為才積) ＝ 長(英吋) × 寬(英吋) × 高(英吋) ÷ 1728<br>※ 經重量和體積計價後取其高者，運費最低2000台幣起。
+
+
+
+        </h6>
 
     </div>
 
@@ -697,9 +665,9 @@
                 alert("重量和體積必須為數字!!")
             } else {
                 if (volume < 300) {
-                    fee = volume * 385;
+                    fee = volume * 260;
                 } else {
-                    fee = volume * 365;
+                    fee = volume * 260;
                 }
 
                 if (document.getElementById("restriction").checked) {
@@ -707,15 +675,15 @@
                         fee = 2000;
                     }
                 }
-                document.getElementById("cal_result").innerHTML = "運費金額粗估為 PHP " + FormatNumber(fee) + "<br><span style='color: red;'>(實際收費金額以現場丈量為主)</span>";
+                document.getElementById("cal_result").innerHTML = "運費金額粗估為 台幣" + FormatNumber(fee) + "元<br><span style='color: red;'>(實際收費金額以現場丈量為主)</span>";
             }
         } else {
 
             if (isNaN(volume)) {
                 if (weight < 3000) {
-                    fee = weight * 36.5;
+                    fee = weight * 25;
                 } else {
-                    fee = weight * 34.5;
+                    fee = weight * 25;
                 }
 
                 if (document.getElementById("restriction").checked) {
@@ -723,22 +691,22 @@
                         fee = 2000;
                     }
                 }
-                document.getElementById("cal_result").innerHTML = "運費金額粗估為 PHP " + FormatNumber(fee) + "<br><span style='color: red;'>(實際收費金額以現場丈量為主)</span>";
+                document.getElementById("cal_result").innerHTML = "運費金額粗估為 台幣" + FormatNumber(fee) + "元<br><span style='color: red;'>(實際收費金額以現場丈量為主)</span>";
             } else {
 
                 var fee1 = 0.00;
                 var fee2 = 0.00;
 
                 if (volume < 300) {
-                    fee1 = volume * 385;
+                    fee1 = volume * 260;
                 } else {
-                    fee1 = volume * 365;
+                    fee1 = volume * 260;
                 }
 
                 if (weight < 3000) {
-                    fee2 = weight * 36.5;
+                    fee2 = weight * 25;
                 } else {
-                    fee2 = weight * 34.5;
+                    fee2 = weight * 25;
                 }
 
                 if (fee1 > fee2) {
@@ -752,7 +720,7 @@
                         fee = 2000;
                     }
                 }
-                document.getElementById("cal_result").innerHTML = "運費金額粗估為 PHP " + FormatNumber(fee) + "<br><span style='color: red;'>(實際收費金額以現場丈量為主)</span>";
+                document.getElementById("cal_result").innerHTML = "運費金額粗估為 台幣" + FormatNumber(fee) + "元<br><span style='color: red;'>(實際收費金額以現場丈量為主)</span>";
             }
 
         }
