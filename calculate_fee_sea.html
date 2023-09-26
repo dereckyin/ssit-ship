@@ -167,15 +167,24 @@
             margin-bottom: 2vh;
         }
 
+        .upper_block h4 {
+            color: red;
+        }
+
         .upper_block h6 {
             text-align: center;
             margin-top: 10px;
+            line-height: 2;
+        }
 
+        .upper_block .ship_selection {
+            text-align: center;
         }
 
         .fee_table {
             display: flex;
             justify-content: space-evenly;
+            margin-top: 30px;
         }
 
         .upper_left_table, div.upper_right_table {
@@ -205,6 +214,7 @@
             width: 90%;
             display: flex;
             justify-content: space-between;
+            margin: 25px 0;
         }
 
         .lower_left_block {
@@ -249,7 +259,16 @@
             margin-top: 10px;
         }
 
-        .lower_right_block .format > div:nth-of-type(3) {
+        .lower_right_block .format > div > label {
+            width: 60px;
+        }
+
+        .lower_right_block .format > div > input[type='text'],
+        .lower_right_block .format > div > select {
+            width: 350px;
+        }
+
+        .lower_right_block .format > div:nth-of-type(6) {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -258,6 +277,7 @@
         .lower_right_block #cal_result {
             font-weight: 700;
             height: 4rem;
+            width: 430px;
         }
 
         .lower_right_block button {
@@ -377,10 +397,9 @@
 
             }
 
-            .upper_block h5 {
+            .upper_block h6 {
                 text-align: left;
                 margin: 0.5vh 10vw 0;
-
             }
 
             .fee_table {
@@ -420,6 +439,20 @@
                 width: 60%;
             }
 
+            .lower_right_block .format{
+                width: 100%;
+                padding: 0 20px;
+            }
+
+            .lower_right_block .format > div > input[type='text'] {
+                width: calc( 100% - 70px );
+            }
+
+            .lower_right_block .format > div > select,
+            .lower_right_block #cal_result {
+                width: calc( 100% - 5px );
+            }
+
         }
 
 
@@ -441,10 +474,10 @@
                 margin-left: -2rem;
             }
 
-            .upper_block h5 {
+            .upper_block h6 {
                 text-align: center;
                 margin-top: 1.5vh;
-
+                font-size: 11px;
             }
 
             .upper_left_table {
@@ -485,10 +518,20 @@
                 width: 100%;
             }
 
-            .lower_right_block input[type="text"] {
-                width: 195px;
+            .lower_right_block .format{
+                width: 100%;
+                padding: 0 20px;
             }
 
+            .lower_right_block .format > div > input[type='text'] {
+                width: calc( 100% - 70px );
+            }
+
+            .lower_right_block .format > div > select,
+            .lower_right_block #cal_result {
+                width: calc( 100% - 5px );
+            }
+                        
             .footer ul {
                 display: flex;
                 justify-content: center;
@@ -546,18 +589,25 @@
     <div class="upper_block">
 
 
-        <h1>&nbsp;&nbsp;&nbsp;運費計價方式</h1>
+        <h1>運費計價方式</h1>
 
-        <div class="fee_table">
+        <div class="ship_selection">
+            <select id="ship_option" onchange="changeContent()">
+                <option value="A">倉庫自取</option>
+                <option value="B">送貨到府(大馬尼拉以內)</option>
+                <option value="C">送貨到府(大馬尼拉以外，呂宋島以內)</option>
+                <option value="D">送貨到府(呂宋島以外、離島)</option>
+            </select>
+        </div>
+
+        
+        <div class="fee_table A">
 
             <div class="upper_left_table">
 
                 <ul>
-                    <li>
-                        重量計價
-                    </li>
-                    <li>
-                        每公斤 台幣25元
+                    <li>重量計價</li>
+                    <li> ● 重量 ＜ 3,000公斤<br>每公斤 菲幣36.5元<br><br> ● 重量 ≧ 3,000公斤<br>每公斤 菲幣34.5元<br>
                     </li>
                 </ul>
 
@@ -566,11 +616,8 @@
             <div class="upper_right_table">
 
                 <ul>
-                    <li>
-                        體積計價
-                    </li>
-                    <li>
-                        每才積 台幣260元
+                    <li>體積計價</li>
+                    <li> ● 體積 ＜ 300才積<br>每才積 菲幣385元<br><br> ● 體積 ≧ 300才積<br>每才積 菲幣365元<br>
                     </li>
                 </ul>
 
@@ -578,11 +625,60 @@
 
         </div>
 
-        <h6>※ 體積為1才積但未滿10公斤者，以才積計價。<br>※ 體積(單位為才積) ＝ 長(英吋) × 寬(英吋) × 高(英吋) ÷ 1728<br>※ 經重量和體積計價後取其高者，運費最低2000台幣起。
+        <div class="fee_table B" style="display: none;">
 
+            <div class="upper_left_table">
 
+                <ul>
+                    <li>重量計價</li>
+                    <li>每公斤 台幣25元</li>
+                </ul>
 
-        </h6>
+            </div>
+
+            <div class="upper_right_table">
+
+                <ul>
+                    <li>體積計價</li>
+                    <li>每才積 台幣260元</li>
+                </ul>
+
+            </div>
+
+        </div>
+
+        <div class="fee_table C" style="display: none;">
+
+            <div class="upper_left_table">
+
+                <ul>
+                    <li>重量計價</li>
+                    <li>每公斤 台幣35元</li>
+                </ul>
+
+            </div>
+
+            <div class="upper_right_table">
+
+                <ul>
+                    <li>體積計價</li>
+                    <li>每才積 台幣360元</li>
+                </ul>
+
+            </div>
+
+        </div>
+
+        <div class="fee_table D" style="display: none;">
+
+            <h4>請來電洽詢運費金額</h4>
+            
+        </div>
+
+        <h6 class="upper_footer A">※ 體積為1才積但未滿10公斤者，以才積計價。<br>※ 體積(單位為才積) ＝ 長(公分) × 寬(公分) × 高(公分) × 0.0000353<br>※ 經重量和體積計價後取其高者，運費最低2000元 菲幣起。</h6>
+        <h6 class="upper_footer B" style="display: none;">※ 體積為1才積但未滿10公斤者，以才積計價。<br>※ 體積(單位為才積) ＝ 長(公分) × 寬(公分) × 高(公分) × 0.0000353<br>※ 經重量和體積計價後取其高者，運費最低2000元 台幣起。</h6>
+        <h6 class="upper_footer C" style="display: none;">※ 體積為1才積但未滿10公斤者，以才積計價。<br>※ 體積(單位為才積) ＝ 長(公分) × 寬(公分) × 高(公分) × 0.0000353<br>※ 經重量和體積計價後取其高者，運費最低2000元 台幣起。</h6>
+        <h6 class="upper_footer D" style="display: none;">※ 體積為1才積但未滿10公斤者，以才積計價。<br>※ 體積(單位為才積) ＝ 長(公分) × 寬(公分) × 高(公分) × 0.0000353<br>※ 經重量和體積計價後取其高者，運費最低2000元 台幣起。</h6>
 
     </div>
 
@@ -607,9 +703,35 @@
 
                 <h3>線上運費試算</h3>
 
-                <div>重量：<input type="text" placeholder="單位為公斤" id="weight"></div>
+                <div>
+                    <label for="weight">重量：</label>
+                    <input type="text" placeholder="單位為公斤" id="weight">
+                </div>
 
-                <div>體積：<input type="text" placeholder="單位為才積" id="volume"></div>
+                <div>
+                    <label for="volume_1">長：</label>
+                    <input type="text" placeholder="單位為公分" id="volume_1">
+                </div>
+
+                <div>
+                    <label for="volume_2">寬：</label>
+                    <input type="text" placeholder="單位為公分" id="volume_2">
+                </div>
+
+                <div>
+                    <label for="volume_3">高：</label>
+                    <input type="text" placeholder="單位為公分" id="volume_3">
+                </div>
+
+                <div>
+                    <label for="location">方式：</label>
+                    <select id="location">
+                        <option value="A">倉庫自取</option>
+                        <option value="B">送貨到府(大馬尼拉以內)</option>
+                        <option value="C">送貨到府(大馬尼拉以外，呂宋島以內)</option>
+                        <option value="D">送貨到府(呂宋島以外、離島)</option>
+                    </select>
+                </div>
 
                 <div>
                     <span style="display: none;"><input type="checkbox" checked id="restriction">納入最低運費條件</span>
@@ -655,74 +777,233 @@
     $(document).on('click', '#calculate', function () {
 
         var weight = parseFloat(document.getElementById("weight").value);
-        var volume = parseFloat(document.getElementById("volume").value);
+        var volume1 = parseFloat(document.getElementById("volume_1").value);
+        var volume2 = parseFloat(document.getElementById("volume_2").value);
+        var volume3 = parseFloat(document.getElementById("volume_3").value);
+        var location = document.getElementById("location").value;
+        var volume = 0.00;
         var fee = 0.00;
 
+        switch(location){
 
-        if (isNaN(weight)) {
+            case "A":
 
-            if (isNaN(volume)) {
-                alert("重量和體積必須為數字!!")
-            } else {
-                if (volume < 300) {
-                    fee = volume * 260;
-                } else {
-                    fee = volume * 260;
-                }
+                if (isNaN(weight)) {
 
-                if (document.getElementById("restriction").checked) {
-                    if (fee < 2000) {
-                        fee = 2000;
+                    if (isNaN(volume1) || isNaN(volume2) || isNaN(volume3)) {
+                        document.getElementById("cal_result").innerHTML = "<span style='color: red;'>至少輸入一個數字到重量或長寬高欄位!</span>";
+                    }
+                    else {
+                        volume = volume1/100.00 * volume2/100.00 * volume3/100.00 * 35.3;
+
+                        if (volume < 300) {
+                            fee = volume * 385;
+                        } else {
+                            fee = volume * 365;
+                        }
+
+                        if (fee < 2000) {
+                            fee = 2000;
+                        }
+
+                        document.getElementById("cal_result").innerHTML = "運費金額粗估為 菲幣" + FormatNumber(fee) + "元 <span style='color: red;'> (實際收費金額以現場丈量為主)</span>";
                     }
                 }
-                document.getElementById("cal_result").innerHTML = "運費金額粗估為 台幣" + FormatNumber(fee) + "元<br><span style='color: red;'>(實際收費金額以現場丈量為主)</span>";
-            }
-        } else {
+                else {
+                    if (isNaN(volume1) || isNaN(volume2) || isNaN(volume3)) {
+                        if (weight < 3000) {
+                            fee = weight * 36.5;
+                        }
+                        else {
+                            fee = weight * 34.5;
+                        }
 
-            if (isNaN(volume)) {
-                if (weight < 3000) {
-                    fee = weight * 25;
-                } else {
-                    fee = weight * 25;
+                        if (fee < 2000) {
+                            fee = 2000;
+                        }
+
+                        document.getElementById("cal_result").innerHTML = "運費金額粗估為 菲幣" + FormatNumber(fee) + "元 <span style='color: red;'> (實際收費金額以現場丈量為主)</span>";
+                    }
+                    else {
+                        volume = volume1/100.00 * volume2/100.00 * volume3/100.00 * 35.3;
+                        var fee1 = 0.00;
+                        var fee2 = 0.00;
+
+                        if (volume < 300) {
+                            fee1 = volume * 385;
+                        } else {
+                            fee1 = volume * 365;
+                        }
+
+                        if (weight < 3000) {
+                            fee2 = weight * 36.5;
+                        } else {
+                            fee2 = weight * 34.5;
+                        }
+
+                        if (fee1 > fee2) {
+                            fee = fee1;
+                        } else {
+                            fee = fee2;
+                        }
+
+                        if (fee < 2000) {
+                            fee = 2000;
+                        }
+
+                        document.getElementById("cal_result").innerHTML = "運費金額粗估為 菲幣" + FormatNumber(fee) + "元 <span style='color: red;'> (實際收費金額以現場丈量為主)</span>";
+                    }
+
                 }
 
-                if (document.getElementById("restriction").checked) {
-                    if (fee < 2000) {
-                        fee = 2000;
+                break;
+
+            case "B":
+
+                if (isNaN(weight)) {
+
+                    if (isNaN(volume1) || isNaN(volume2) || isNaN(volume3)) {
+                        document.getElementById("cal_result").innerHTML = "<span style='color: red;'>至少輸入一個數字到重量或長寬高欄位!</span>";
+                    }
+                    else {
+                        volume = volume1/100.00 * volume2/100.00 * volume3/100.00 * 35.3;
+
+                        if (volume < 300) {
+                            fee = volume * 260;
+                        } else {
+                            fee = volume * 260;
+                        }
+
+                        if (fee < 2000) {
+                            fee = 2000;
+                        }
+
+                        document.getElementById("cal_result").innerHTML = "運費金額粗估為 台幣" + FormatNumber(fee) + "元 <span style='color: red;'> (實際收費金額以現場丈量為主)</span>";
                     }
                 }
-                document.getElementById("cal_result").innerHTML = "運費金額粗估為 台幣" + FormatNumber(fee) + "元<br><span style='color: red;'>(實際收費金額以現場丈量為主)</span>";
-            } else {
+                else {
+                    if (isNaN(volume1) || isNaN(volume2) || isNaN(volume3)) {
+                        if (weight < 3000) {
+                            fee = weight * 25;
+                        }
+                        else {
+                            fee = weight * 25;
+                        }
 
-                var fee1 = 0.00;
-                var fee2 = 0.00;
+                        if (fee < 2000) {
+                            fee = 2000;
+                        }
 
-                if (volume < 300) {
-                    fee1 = volume * 260;
-                } else {
-                    fee1 = volume * 260;
+                        document.getElementById("cal_result").innerHTML = "運費金額粗估為 台幣" + FormatNumber(fee) + "元 <span style='color: red;'> (實際收費金額以現場丈量為主)</span>";
+                    }
+                    else {
+                        volume = volume1/100.00 * volume2/100.00 * volume3/100.00 * 35.3;
+                        var fee1 = 0.00;
+                        var fee2 = 0.00;
+
+                        if (volume < 300) {
+                            fee1 = volume * 260;
+                        } else {
+                            fee1 = volume * 260;
+                        }
+
+                        if (weight < 3000) {
+                            fee2 = weight * 25;
+                        } else {
+                            fee2 = weight * 25;
+                        }
+
+                        if (fee1 > fee2) {
+                            fee = fee1;
+                        } else {
+                            fee = fee2;
+                        }
+
+                        if (fee < 2000) {
+                            fee = 2000;
+                        }
+
+                        document.getElementById("cal_result").innerHTML = "運費金額粗估為 台幣" + FormatNumber(fee) + "元 <span style='color: red;'> (實際收費金額以現場丈量為主)</span>";
+                    }
+
                 }
 
-                if (weight < 3000) {
-                    fee2 = weight * 25;
-                } else {
-                    fee2 = weight * 25;
-                }
+                break;
 
-                if (fee1 > fee2) {
-                    fee = fee1;
-                } else {
-                    fee = fee2;
-                }
+            case "C":
 
-                if (document.getElementById("restriction").checked) {
-                    if (fee < 2000) {
-                        fee = 2000;
+                if (isNaN(weight)) {
+
+                    if (isNaN(volume1) || isNaN(volume2) || isNaN(volume3)) {
+                        document.getElementById("cal_result").innerHTML = "<span style='color: red;'>至少輸入一個數字到重量或長寬高欄位!</span>";
+                    }
+                    else {
+                        volume = volume1/100.00 * volume2/100.00 * volume3/100.00 * 35.3;
+
+                        if (volume < 300) {
+                            fee = volume * 360;
+                        } else {
+                            fee = volume * 360;
+                        }
+
+                        if (fee < 2000) {
+                            fee = 2000;
+                        }
+
+                        document.getElementById("cal_result").innerHTML = "運費金額粗估為 台幣" + FormatNumber(fee) + "元 <span style='color: red;'> (實際收費金額以現場丈量為主)</span>";
                     }
                 }
-                document.getElementById("cal_result").innerHTML = "運費金額粗估為 台幣" + FormatNumber(fee) + "元<br><span style='color: red;'>(實際收費金額以現場丈量為主)</span>";
-            }
+                else {
+                    if (isNaN(volume1) || isNaN(volume2) || isNaN(volume3)) {
+                        if (weight < 3000) {
+                            fee = weight * 35;
+                        }
+                        else {
+                            fee = weight * 35;
+                        }
 
+                        if (fee < 2000) {
+                            fee = 2000;
+                        }
+
+                        document.getElementById("cal_result").innerHTML = "運費金額粗估為 台幣" + FormatNumber(fee) + "元 <span style='color: red;'> (實際收費金額以現場丈量為主)</span>";
+                    }
+                    else {
+                        volume = volume1/100.00 * volume2/100.00 * volume3/100.00 * 35.3;
+                        var fee1 = 0.00;
+                        var fee2 = 0.00;
+
+                        if (volume < 300) {
+                            fee1 = volume * 360;
+                        } else {
+                            fee1 = volume * 360;
+                        }
+
+                        if (weight < 3000) {
+                            fee2 = weight * 35;
+                        } else {
+                            fee2 = weight * 35;
+                        }
+
+                        if (fee1 > fee2) {
+                            fee = fee1;
+                        } else {
+                            fee = fee2;
+                        }
+
+                        if (fee < 2000) {
+                            fee = 2000;
+                        }
+
+                        document.getElementById("cal_result").innerHTML = "運費金額粗估為 台幣" + FormatNumber(fee) + "元 <span style='color: red;'> (實際收費金額以現場丈量為主)</span>";
+                    }
+
+                }
+
+                break;
+
+            case "D":
+                document.getElementById("cal_result").innerHTML = "<span style='color: red;'>請來電洽詢運費金額</span>";
         }
 
         dataLayer.push({
@@ -738,6 +1019,68 @@
         var arr = n.split(".");
         var re = /(\d{1,3})(?=(\d{3})+$)/g;
         return arr[0].replace(re, "$1,") + (arr.length == 2 ? "." + arr[1] : "");
+    }
+
+    function changeContent() {
+
+        var ship_option = document.getElementById("ship_option").value;
+
+        switch(ship_option){
+
+            case "A":
+                document.getElementsByClassName("fee_table A")[0].style.display = "flex";
+                document.getElementsByClassName("fee_table B")[0].style.display = "none";
+                document.getElementsByClassName("fee_table C")[0].style.display = "none";
+                document.getElementsByClassName("fee_table D")[0].style.display = "none";
+
+                document.getElementsByClassName("upper_footer A")[0].style.display = "block";
+                document.getElementsByClassName("upper_footer B")[0].style.display = "none";
+                document.getElementsByClassName("upper_footer C")[0].style.display = "none";
+                document.getElementsByClassName("upper_footer D")[0].style.display = "none";
+
+
+
+                break;
+
+            case "B":
+                document.getElementsByClassName("fee_table A")[0].style.display = "none";
+                document.getElementsByClassName("fee_table B")[0].style.display = "flex";
+                document.getElementsByClassName("fee_table C")[0].style.display = "none";
+                document.getElementsByClassName("fee_table D")[0].style.display = "none";
+
+                document.getElementsByClassName("upper_footer A")[0].style.display = "none";
+                document.getElementsByClassName("upper_footer B")[0].style.display = "block";
+                document.getElementsByClassName("upper_footer C")[0].style.display = "none";
+                document.getElementsByClassName("upper_footer D")[0].style.display = "none";
+
+                break;
+
+            case "C":
+                document.getElementsByClassName("fee_table A")[0].style.display = "none";
+                document.getElementsByClassName("fee_table B")[0].style.display = "none";
+                document.getElementsByClassName("fee_table C")[0].style.display = "flex";
+                document.getElementsByClassName("fee_table D")[0].style.display = "none";
+
+                document.getElementsByClassName("upper_footer A")[0].style.display = "none";
+                document.getElementsByClassName("upper_footer B")[0].style.display = "none";
+                document.getElementsByClassName("upper_footer C")[0].style.display = "block";
+                document.getElementsByClassName("upper_footer D")[0].style.display = "none";
+
+                break;
+
+            case "D":
+                document.getElementsByClassName("fee_table A")[0].style.display = "none";
+                document.getElementsByClassName("fee_table B")[0].style.display = "none";
+                document.getElementsByClassName("fee_table C")[0].style.display = "none";
+                document.getElementsByClassName("fee_table D")[0].style.display = "flex";
+
+                document.getElementsByClassName("upper_footer A")[0].style.display = "none";
+                document.getElementsByClassName("upper_footer B")[0].style.display = "none";
+                document.getElementsByClassName("upper_footer C")[0].style.display = "none";
+                document.getElementsByClassName("upper_footer D")[0].style.display = "block";
+                       
+        }
+
     }
 
 

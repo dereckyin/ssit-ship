@@ -172,10 +172,10 @@
             margin-left: -34px;
         }
 
-        .upper_block h5 {
+        .upper_block h6 {
             text-align: center;
             margin-top: 0.5vh;
-
+            line-height: 1.5;
         }
 
         .fee_table {
@@ -198,7 +198,7 @@
             padding: 20px calc(-49.702px + 5.342vw);
             text-align: center;
             font-weight: 600;
-            width: 350px
+            width: 380px
         }
 
         .upper_left_table ul > li:nth-of-type(2), div.upper_right_table ul > li:nth-of-type(2) {
@@ -211,6 +211,7 @@
             width: 90%;
             display: flex;
             justify-content: space-between;
+            margin: 25px 0;
         }
 
         .lower_left_block {
@@ -255,7 +256,15 @@
             margin-top: 10px;
         }
 
-        .lower_right_block .format > div:nth-of-type(3) {
+        .lower_right_block .format > div > label {
+            width: 60px;
+        }
+
+        .lower_right_block .format > div > input[type='text'] {
+            width: 350px;
+        }
+
+        .lower_right_block .format > div:nth-of-type(5) {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -264,6 +273,7 @@
         .lower_right_block #cal_result {
             font-weight: 700;
             height: 4rem;
+            width: 430px;
         }
 
         .lower_right_block button {
@@ -383,7 +393,7 @@
 
             }
 
-            .upper_block h5 {
+            .upper_block h6 {
                 text-align: left;
                 margin: 0.5vh 10vw 0;
 
@@ -401,7 +411,7 @@
 
             .upper_left_table ul > li:nth-of-type(1), div.upper_right_table ul > li:nth-of-type(1) {
                 padding: 20px 20px;
-                width: 300px;
+                width: 320px;
             }
 
             .upper_left_table ul > li:nth-of-type(2), div.upper_right_table ul > li:nth-of-type(2) {
@@ -426,6 +436,19 @@
                 width: 60%;
             }
 
+            .lower_right_block .format{
+                width: 100%;
+                padding: 0 20px;
+            }
+
+            .lower_right_block .format > div > input[type='text'] {
+                width: calc( 100% - 70px );
+            }
+
+            .lower_right_block #cal_result {
+                width: calc( 100% - 5px );
+            }
+
         }
 
 
@@ -447,9 +470,10 @@
                 margin-left: -2rem;
             }
 
-            .upper_block h5 {
+            .upper_block h6 {
                 text-align: center;
                 margin-top: 1.5vh;
+                font-size: 11px;
 
             }
 
@@ -482,13 +506,21 @@
                 margin-left: -20px;
             }
 
-
             .lower_right_block {
                 width: 100%;
             }
 
-            .lower_right_block input[type="text"] {
-                width: 195px;
+            .lower_right_block .format{
+                width: 100%;
+                padding: 0 20px;
+            }
+
+            .lower_right_block .format > div > input[type='text'] {
+                width: calc( 100% - 70px );
+            }
+
+            .lower_right_block #cal_result {
+                width: calc( 100% - 5px );
             }
 
             .footer ul {
@@ -581,8 +613,8 @@
 
         </div>
 
-        <h5> ※ 重量計價、體積計價，兩者取較大者收費<br>
-             <span style="color: red">※ 寄貨量 100 公斤以上者，另有優惠</span></h5>
+        <h6> ※ 重量計價、體積計價，兩者取較大者收費<br>
+             <span style="color: red">※ 寄貨量 100 公斤以上者，另有優惠</span></h6>
 
     </div>
 
@@ -604,9 +636,25 @@
 
                 <h3>線上運費試算</h3>
 
-                <div>重量：<input type="text" placeholder="單位為公斤" id="weight"></div>
+                <div>
+                    <label for="weight">重量：</label>
+                    <input type="text" placeholder="單位為公斤" id="weight">
+                </div>
 
-                <div>體積：<input type="text" placeholder="單位為立方公分" id="volume"></div>
+                <div>
+                    <label for="volume_1">長：</label>
+                    <input type="text" placeholder="單位為公分" id="volume_1">
+                </div>
+
+                <div>
+                    <label for="volume_2">寬：</label>
+                    <input type="text" placeholder="單位為公分" id="volume_2">
+                </div>
+
+                <div>
+                    <label for="volume_3">高：</label>
+                    <input type="text" placeholder="單位為公分" id="volume_3">
+                </div>
 
                 <div>
                     <span style="display: none;"><input type="checkbox" checked id="restriction">納入最低運費條件</span>
@@ -652,31 +700,50 @@
     $(document).on('click', '#calculate', function () {
 
         var weight = parseFloat(document.getElementById("weight").value);
-        var volume = parseFloat(document.getElementById("volume").value);
+        var volume1 = parseFloat(document.getElementById("volume_1").value);
+        var volume2 = parseFloat(document.getElementById("volume_2").value);
+        var volume3 = parseFloat(document.getElementById("volume_3").value);
+        var volume = 0.00;
         var fee = 0.00;
 
 
         if (isNaN(weight)) {
 
-            if (isNaN(volume)) {
-                document.getElementById("cal_result").innerHTML = "<span style='color: red;'>至少輸入一個數字到重量或體積欄位!</span>";
-                //alert("重量和體積必須為數字!!")
+            if (isNaN(volume1) || isNaN(volume2) || isNaN(volume3)) {
+                document.getElementById("cal_result").innerHTML = "<span style='color: red;'>至少輸入一個數字到重量或長寬高欄位!</span>";
             } else {
-                fee = volume / 6000 * 550;
-                document.getElementById("cal_result").innerHTML = "運費金額粗估為 台幣" + FormatNumber(fee) + "元<br><span style='color: red;'> (實際收費金額以現場丈量為主)</span>";
+
+                volume = volume1 * volume2 * volume3 / 6000;
+                fee = volume * 550;
+
+                if( volume >= 100 ){
+                    document.getElementById("cal_result").innerHTML = "運費金額粗估為 台幣" + FormatNumber(fee) + "元 <span style='color: red;'> (寄貨量 100 公斤以上，請來電運費另有優惠)</span>";
+                }
+                else{
+                    document.getElementById("cal_result").innerHTML = "運費金額粗估為 台幣" + FormatNumber(fee) + "元 <span style='color: red;'> (實際收費金額以現場丈量為主)</span>";
+                }
+
             }
         } else {
 
             if (isNaN(volume)) {
+
                 fee = weight * 550;
-                document.getElementById("cal_result").innerHTML = "運費金額粗估為 台幣" + FormatNumber(fee) + "元<br><span style='color: red;'> (實際收費金額以現場丈量為主)</span>";
+
+                if( weight >= 100 ){
+                    document.getElementById("cal_result").innerHTML = "運費金額粗估為 台幣" + FormatNumber(fee) + "元 <span style='color: red;'> (寄貨量 100 公斤以上，請來電運費另有優惠)</span>";
+                }
+                else{
+                    document.getElementById("cal_result").innerHTML = "運費金額粗估為 台幣" + FormatNumber(fee) + "元 <span style='color: red;'> (實際收費金額以現場丈量為主)</span>";
+                }
+
             } else {
 
                 var fee1 = 0.00;
                 var fee2 = 0.00;
 
-
-                fee1 = volume/6000 * 550;
+                volume = volume1 * volume2 * volume3 / 6000;
+                fee1 = volume * 550;
                 fee2 = weight * 550;
 
                 if (fee1 > fee2) {
@@ -685,8 +752,12 @@
                     fee = fee2;
                 }
 
-                document.getElementById("cal_result").innerHTML = "運費金額粗估為 台幣" + FormatNumber(fee) + "元<br><span style='color: red;'> (實際收費金額以現場丈量為主)</span>";
-
+                if( fee/550.0 >= 100 ){
+                    document.getElementById("cal_result").innerHTML = "運費金額粗估為 台幣" + FormatNumber(fee) + "元 <span style='color: red;'> (寄貨量 100 公斤以上，請來電運費另有優惠)</span>";
+                }
+                else{
+                    document.getElementById("cal_result").innerHTML = "運費金額粗估為 台幣" + FormatNumber(fee) + "元 <span style='color: red;'> (實際收費金額以現場丈量為主)</span>";
+                }
             }
         }
 

@@ -400,9 +400,24 @@
 
 <div class="content">
     <div class="main_bg" onmouseover="clearTimeout(timeout_id);" onmouseout="showSlides(slideIndex)">
-        <img class="desktop" src="images/bigpic6.png">
-        <img class="pad" src="images/bigpic6.png">
-        <img class="mobile" src="images/mobilepic6.png">
+        <img class="desktop" src="images/bigpic6_1.png">
+        <img class="pad" src="images/bigpic6_1.png">
+        <img class="mobile" src="images/mobilepic6_1.png">
+    </div>
+    <div class="main_bg" onmouseover="clearTimeout(timeout_id);" onmouseout="showSlides(slideIndex)">
+        <img class="desktop" src="images/bigpic6_2.png">
+        <img class="pad" src="images/bigpic6_2.png">
+        <img class="mobile" src="images/mobilepic6_2.png">
+    </div>
+    <div class="main_bg" onmouseover="clearTimeout(timeout_id);" onmouseout="showSlides(slideIndex)">
+        <img class="desktop" src="images/bigpic6_3.png">
+        <img class="pad" src="images/bigpic6_3.png">
+        <img class="mobile" src="images/mobilepic6_3.png">
+    </div>
+    <div class="main_bg" onmouseover="clearTimeout(timeout_id);" onmouseout="showSlides(slideIndex)">
+        <img class="desktop" src="images/bigpic6_4.png">
+        <img class="pad" src="images/bigpic6_4.png">
+        <img class="mobile" src="images/mobilepic6_4.png">
     </div>
     <div class="main_bg" onmouseover="clearTimeout(timeout_id);" onmouseout="showSlides(slideIndex)">
         <img class="desktop" src="images/bigpic7.png">
@@ -416,6 +431,9 @@
     <div class="switch_button_box">
         <div class="switch_button" style="background-color: #B1B1B1;" onclick="assignSlides(0)"></div>
         <div class="switch_button" style="background-color: #ffffff;" onclick="assignSlides(1)"></div>
+        <div class="switch_button" style="background-color: #ffffff;" onclick="assignSlides(2)"></div>
+        <div class="switch_button" style="background-color: #ffffff;" onclick="assignSlides(3)"></div>
+        <div class="switch_button" style="background-color: #ffffff;" onclick="assignSlides(4)"></div>
     </div>
 
 </div>
@@ -474,13 +492,47 @@
 
         let buttons = document.getElementsByClassName("switch_button");
 
-        if( n==0){
-            buttons[0].style.backgroundColor = "#B1B1B1";
-            buttons[1].style.backgroundColor = "#FFFFFF";
-        }
-        else{
-            buttons[1].style.backgroundColor = "#B1B1B1";
-            buttons[0].style.backgroundColor = "#FFFFFF";
+        switch(n){
+
+            case 0:
+                buttons[0].style.backgroundColor = "#B1B1B1";
+                buttons[1].style.backgroundColor = "#FFFFFF";
+                buttons[2].style.backgroundColor = "#FFFFFF";
+                buttons[3].style.backgroundColor = "#FFFFFF";
+                buttons[4].style.backgroundColor = "#FFFFFF";
+                break;
+
+            case 1:
+                buttons[0].style.backgroundColor = "#FFFFFF";
+                buttons[1].style.backgroundColor = "#B1B1B1";
+                buttons[2].style.backgroundColor = "#FFFFFF";
+                buttons[3].style.backgroundColor = "#FFFFFF";
+                buttons[4].style.backgroundColor = "#FFFFFF";
+                break;
+
+            case 2:
+                buttons[0].style.backgroundColor = "#FFFFFF";
+                buttons[1].style.backgroundColor = "#FFFFFF";
+                buttons[2].style.backgroundColor = "#B1B1B1";
+                buttons[3].style.backgroundColor = "#FFFFFF";
+                buttons[4].style.backgroundColor = "#FFFFFF";
+                break;
+
+           case 3:
+                buttons[0].style.backgroundColor = "#FFFFFF";
+                buttons[1].style.backgroundColor = "#FFFFFF";
+                buttons[2].style.backgroundColor = "#FFFFFF";
+                buttons[3].style.backgroundColor = "#B1B1B1";
+                buttons[4].style.backgroundColor = "#FFFFFF";
+                break;
+
+           case 4:
+                buttons[0].style.backgroundColor = "#FFFFFF";
+                buttons[1].style.backgroundColor = "#FFFFFF";
+                buttons[2].style.backgroundColor = "#FFFFFF";
+                buttons[3].style.backgroundColor = "#FFFFFF";
+                buttons[4].style.backgroundColor = "#B1B1B1";
+
         }
     }
 
