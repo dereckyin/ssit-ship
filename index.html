@@ -810,14 +810,26 @@
                     else {
                         volume = volume1/100.00 * volume2/100.00 * volume3/100.00 * 35.3;
 
-                        if (volume < 300) {
-                            fee = volume * 385;
-                        } else {
-                            fee = volume * 365;
-                        }
-
-                        if (fee < 2000) {
+                        if (volume <= 4.5) {
                             fee = 2000;
+                        }
+                        else {
+                            if (volume < 30) {
+                                fee = volume * 450;
+                            }
+                            else {
+                                if (volume < 100) {
+                                    fee = volume * 430;
+                                }
+                                else {
+                                    if (volume < 300) {
+                                        fee = volume * 410;
+                                    }
+                                    else {
+                                        fee = volume * 395;
+                                    }
+                                }
+                            }
                         }
 
                         document.getElementById("cal_result").innerHTML = "運費金額粗估為 菲幣" + FormatNumber(fee) + "元 <span style='color: red;'> (實際收費金額以現場丈量為主)</span>";
@@ -825,15 +837,27 @@
                 }
                 else {
                     if (isNaN(volume1) || isNaN(volume2) || isNaN(volume3)) {
-                        if (weight < 3000) {
-                            fee = weight * 36.5;
+
+                        if (weight <= 45) {
+                            fee = 2000;
                         }
                         else {
-                            fee = weight * 34.5;
-                        }
-
-                        if (fee < 2000) {
-                            fee = 2000;
+                            if (weight < 300) {
+                                fee = weight * 45;
+                            }
+                            else {
+                                if (weight < 1000) {
+                                    fee = weight * 42;
+                                }
+                                else {
+                                    if (weight < 3000) {
+                                        fee = weight * 40;
+                                    }
+                                    else {
+                                        fee = weight * 38.5;
+                                    }
+                                }
+                            }
                         }
 
                         document.getElementById("cal_result").innerHTML = "運費金額粗估為 菲幣" + FormatNumber(fee) + "元 <span style='color: red;'> (實際收費金額以現場丈量為主)</span>";
@@ -843,17 +867,51 @@
                         var fee1 = 0.00;
                         var fee2 = 0.00;
 
-                        if (volume < 300) {
-                            fee1 = volume * 385;
-                        } else {
-                            fee1 = volume * 365;
+                        if (volume <= 4.5) {
+                            fee1 = 2000;
+                        }
+                        else {
+                            if (volume < 30) {
+                                fee1 = volume * 450;
+                            }
+                            else {
+                                if (volume < 100) {
+                                    fee1 = volume * 430;
+                                }
+                                else {
+                                    if (volume < 300) {
+                                        fee1 = volume * 410;
+                                    }
+                                    else {
+                                        fee1 = volume * 395;
+                                    }
+                                }
+                            }
                         }
 
-                        if (weight < 3000) {
-                            fee2 = weight * 36.5;
-                        } else {
-                            fee2 = weight * 34.5;
+
+                        if (weight <= 45) {
+                            fee2 = 2000;
                         }
+                        else {
+                            if (weight < 300) {
+                                fee2 = weight * 45;
+                            }
+                            else {
+                                if (weight < 1000) {
+                                    fee2 = weight * 42;
+                                }
+                                else {
+                                    if (weight < 3000) {
+                                        fee2 = weight * 40;
+                                    }
+                                    else {
+                                        fee2 = weight * 38.5;
+                                    }
+                                }
+                            }
+                        }
+
 
                         if (fee1 > fee2) {
                             fee = fee1;
