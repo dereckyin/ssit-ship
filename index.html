@@ -941,9 +941,9 @@
                         volume = volume1/100.00 * volume2/100.00 * volume3/100.00 * 35.3;
 
                         if (volume < 300) {
-                            fee = volume * 260;
+                            fee = volume * 280;
                         } else {
-                            fee = volume * 260;
+                            fee = volume * 280;
                         }
 
                         if (fee < 2000) {
@@ -956,10 +956,10 @@
                 else {
                     if (isNaN(volume1) || isNaN(volume2) || isNaN(volume3)) {
                         if (weight < 3000) {
-                            fee = weight * 25;
+                            fee = weight * 27;
                         }
                         else {
-                            fee = weight * 25;
+                            fee = weight * 27;
                         }
 
                         if (fee < 2000) {
@@ -974,15 +974,15 @@
                         var fee2 = 0.00;
 
                         if (volume < 300) {
-                            fee1 = volume * 260;
+                            fee1 = volume * 280;
                         } else {
-                            fee1 = volume * 260;
+                            fee1 = volume * 280;
                         }
 
                         if (weight < 3000) {
-                            fee2 = weight * 25;
+                            fee2 = weight * 27;
                         } else {
-                            fee2 = weight * 25;
+                            fee2 = weight * 27;
                         }
 
                         if (fee1 > fee2) {
