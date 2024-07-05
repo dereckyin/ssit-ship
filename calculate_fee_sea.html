@@ -635,7 +635,7 @@
 
                 <ul>
                     <li>重量計價</li>
-                    <li>每公斤 台幣25元</li>
+                    <li>每公斤 台幣27元</li>
                 </ul>
 
             </div>
@@ -644,7 +644,7 @@
 
                 <ul>
                     <li>體積計價</li>
-                    <li>每才積 台幣260元</li>
+                    <li>每才積 台幣280元</li>
                 </ul>
 
             </div>
@@ -653,23 +653,7 @@
 
         <div class="fee_table C" style="display: none;">
 
-            <div class="upper_left_table">
-
-                <ul>
-                    <li>重量計價</li>
-                    <li>每公斤 台幣35元</li>
-                </ul>
-
-            </div>
-
-            <div class="upper_right_table">
-
-                <ul>
-                    <li>體積計價</li>
-                    <li>每才積 台幣360元</li>
-                </ul>
-
-            </div>
+            <h4>請來電洽詢運費金額</h4>
 
         </div>
 
@@ -930,9 +914,9 @@
                         volume = volume1/100.00 * volume2/100.00 * volume3/100.00 * 35.3;
 
                         if (volume < 300) {
-                            fee = volume * 260;
+                            fee = volume * 280;
                         } else {
-                            fee = volume * 260;
+                            fee = volume * 280;
                         }
 
                         if (fee < 2000) {
@@ -945,10 +929,10 @@
                 else {
                     if (isNaN(volume1) || isNaN(volume2) || isNaN(volume3)) {
                         if (weight < 3000) {
-                            fee = weight * 25;
+                            fee = weight * 27;
                         }
                         else {
-                            fee = weight * 25;
+                            fee = weight * 27;
                         }
 
                         if (fee < 2000) {
@@ -963,15 +947,15 @@
                         var fee2 = 0.00;
 
                         if (volume < 300) {
-                            fee1 = volume * 260;
+                            fee1 = volume * 280;
                         } else {
-                            fee1 = volume * 260;
+                            fee1 = volume * 280;
                         }
 
                         if (weight < 3000) {
-                            fee2 = weight * 25;
+                            fee2 = weight * 27;
                         } else {
-                            fee2 = weight * 25;
+                            fee2 = weight * 27;
                         }
 
                         if (fee1 > fee2) {
@@ -992,75 +976,7 @@
                 break;
 
             case "C":
-
-                if (isNaN(weight)) {
-
-                    if (isNaN(volume1) || isNaN(volume2) || isNaN(volume3)) {
-                        document.getElementById("cal_result").innerHTML = "<span style='color: red;'>至少輸入一個數字到重量或長寬高欄位!</span>";
-                    }
-                    else {
-                        volume = volume1/100.00 * volume2/100.00 * volume3/100.00 * 35.3;
-
-                        if (volume < 300) {
-                            fee = volume * 360;
-                        } else {
-                            fee = volume * 360;
-                        }
-
-                        if (fee < 2000) {
-                            fee = 2000;
-                        }
-
-                        document.getElementById("cal_result").innerHTML = "運費金額粗估為 台幣" + FormatNumber(fee) + "元 <span style='color: red;'> (實際收費金額以現場丈量為主)</span>";
-                    }
-                }
-                else {
-                    if (isNaN(volume1) || isNaN(volume2) || isNaN(volume3)) {
-                        if (weight < 3000) {
-                            fee = weight * 35;
-                        }
-                        else {
-                            fee = weight * 35;
-                        }
-
-                        if (fee < 2000) {
-                            fee = 2000;
-                        }
-
-                        document.getElementById("cal_result").innerHTML = "運費金額粗估為 台幣" + FormatNumber(fee) + "元 <span style='color: red;'> (實際收費金額以現場丈量為主)</span>";
-                    }
-                    else {
-                        volume = volume1/100.00 * volume2/100.00 * volume3/100.00 * 35.3;
-                        var fee1 = 0.00;
-                        var fee2 = 0.00;
-
-                        if (volume < 300) {
-                            fee1 = volume * 360;
-                        } else {
-                            fee1 = volume * 360;
-                        }
-
-                        if (weight < 3000) {
-                            fee2 = weight * 35;
-                        } else {
-                            fee2 = weight * 35;
-                        }
-
-                        if (fee1 > fee2) {
-                            fee = fee1;
-                        } else {
-                            fee = fee2;
-                        }
-
-                        if (fee < 2000) {
-                            fee = 2000;
-                        }
-
-                        document.getElementById("cal_result").innerHTML = "運費金額粗估為 台幣" + FormatNumber(fee) + "元 <span style='color: red;'> (實際收費金額以現場丈量為主)</span>";
-                    }
-
-                }
-
+                document.getElementById("cal_result").innerHTML = "<span style='color: red;'>請來電洽詢運費金額</span>";
                 break;
 
             case "D":
