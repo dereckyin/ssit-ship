@@ -264,10 +264,11 @@
             width: 350px;
         }
 
-        .lower_right_block .format > div:nth-of-type(5) {
+        .lower_right_block .format > div:nth-of-type(6) {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            height: 57.6px;
         }
 
         .lower_right_block #cal_result {
@@ -313,6 +314,66 @@
 
         .copyright span {
             font-weight: 700;
+        }
+
+        #list-container {
+            margin: 10px 0;
+            padding: 0;
+            position: relative;
+            padding-top: 30px;
+            margin-top: 10px;
+        }
+
+        #list-container::after {
+            content: "試算清單:";
+            position: absolute;
+            font-size: 18px;
+            font-weight: 700;
+            color: rgb(23, 162, 184);
+            top: 0;
+            left: 0;
+
+        }
+
+        #list-container li {
+            cursor: pointer;
+            position: relative;
+            padding: 8px 8px 8px 40px;
+            background: rgba(23, 162, 184, 0.2);
+            font-size: 18px;
+            transition: 0.2s;
+            border-bottom: 2px solid #fff;
+
+            /* make the list items unselectable */
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        #list-container li span.close {
+            position: absolute;
+            right: 0;
+            top: 0;
+            padding: 8px 16px 8px 16px;
+        }
+
+        #list-container li span.weightdata {
+            display: none;
+        }
+
+        #list-container li span.volumedata {
+            display: none;
+        }
+
+        #list-container li span.box {
+            display: none;
+        }
+
+        .lower_right_block #hint_message {
+            font-weight: 700;
+            width: 300px;
+            color: red;
         }
 
 
@@ -512,15 +573,23 @@
 
             .lower_right_block .format{
                 width: 100%;
-                padding: 0 20px;
+                padding: 0 20px 30px;
             }
 
             .lower_right_block .format > div > input[type='text'] {
                 width: calc( 100% - 70px );
             }
 
+            .lower_right_block #hint_message {
+                margin-left: 10px;
+            }
+
             .lower_right_block #cal_result {
                 width: calc( 100% - 5px );
+            }
+
+            #list-container li {
+                padding: 10px 40px 10px 10px;
             }
 
             .footer ul {
@@ -657,6 +726,20 @@
                 </div>
 
                 <div>
+                    <label for="box">箱數：</label>
+                    <input type="text" placeholder="箱數" id="box">
+                </div>
+
+                <div>
+                    <button class="btn btn-info" id="add">加入清單</button>
+                    <span id="hint_message"></span>
+                </div>
+
+                <ul id="list-container">
+
+                </ul>
+
+                <div>
                     <span style="display: none;"><input type="checkbox" checked id="restriction">納入最低運費條件</span>
                     <button class="btn btn-info" id="calculate">試算</button>
                 </div>
@@ -697,68 +780,106 @@
 
     var dataLayer = window.dataLayer || [];
 
-    $(document).on('click', '#calculate', function () {
+    var close = document.getElementsByClassName("close");
+    var i;
+    var totalweight = 0.0;
+    var totalvolume = 0.0;
+
+
+    $(document).on('click', '#add', function () {
 
         var weight = parseFloat(document.getElementById("weight").value);
         var volume1 = parseFloat(document.getElementById("volume_1").value);
         var volume2 = parseFloat(document.getElementById("volume_2").value);
         var volume3 = parseFloat(document.getElementById("volume_3").value);
+        var box = parseFloat(document.getElementById("box").value);
         var volume = 0.00;
+
+        if ( isNaN(weight) || isNaN(volume1) || isNaN(volume2) || isNaN(volume3) || isNaN(box) ) {
+            document.getElementById("hint_message").innerHTML = "重量 和 長寬高 和 箱數 欄位都需要輸入數值!";
+        }
+        else {
+
+            document.getElementById("weight").value = "";
+            document.getElementById("volume_1").value = "";
+            document.getElementById("volume_2").value = "";
+            document.getElementById("volume_3").value = "";
+            document.getElementById("box").value = "";
+
+            volume = volume1 * volume2 * volume3/6000.00;
+
+            var txt1 = "重量: " + weight + "; 體積: " + volume1 + "*" + volume2 + "*" + volume3 + "; 箱數: " + box;
+
+            var li = document.createElement("li");
+            var t = document.createTextNode(txt1);
+            li.appendChild(t);
+
+            var span = document.createElement("span");
+            var txt2 = document.createTextNode("\u00D7");
+            span.className = "close";
+            span.appendChild(txt2);
+            li.appendChild(span);
+
+            span = document.createElement("span");
+            txt2 = document.createTextNode(weight);
+            span.className = "weightdata";
+            span.appendChild(txt2);
+            li.appendChild(span);
+
+            span = document.createElement("span");
+            txt2 = document.createTextNode(volume);
+            span.className = "volumedata";
+            span.appendChild(txt2);
+            li.appendChild(span);
+
+            span = document.createElement("span");
+            txt2 = document.createTextNode(box);
+            span.className = "box";
+            span.appendChild(txt2);
+            li.appendChild(span);
+
+            document.getElementById("list-container").appendChild(li);
+            totalweight = totalweight + weight*box;
+            totalvolume = totalvolume + volume*box;
+        }
+
+        for (i = 0; i < close.length; i++) {
+            close[i].onclick = function() {
+                var div = this.parentElement;
+                var weight = this.nextSibling;
+                var volume = weight.nextSibling;
+                var box = volume.nextSibling;
+
+                div.style.display = "none";
+
+                totalweight = totalweight - parseFloat(weight.innerHTML)*parseFloat(box.innerHTML);
+                totalvolume = totalvolume - parseFloat(volume.innerHTML)*parseFloat(box.innerHTML);
+
+            }
+        }
+
+    });
+
+    $(document).on('click', '#calculate', function () {
+
         var fee = 0.00;
+        var fee1 = 0.00;
+        var fee2 = 0.00;
 
+        fee1 = totalvolume * 550;
+        fee2 = totalweight * 550;
 
-        if (isNaN(weight)) {
-
-            if (isNaN(volume1) || isNaN(volume2) || isNaN(volume3)) {
-                document.getElementById("cal_result").innerHTML = "<span style='color: red;'>至少輸入一個數字到重量或長寬高欄位!</span>";
-            } else {
-
-                volume = volume1 * volume2 * volume3 / 6000;
-                fee = volume * 550;
-
-                if( volume >= 100 ){
-                    document.getElementById("cal_result").innerHTML = "運費金額粗估為 台幣" + FormatNumber(fee) + "元 <span style='color: red;'> (寄貨量 100 公斤以上，請來電運費另有優惠)</span>";
-                }
-                else{
-                    document.getElementById("cal_result").innerHTML = "運費金額粗估為 台幣" + FormatNumber(fee) + "元 <span style='color: red;'> (實際收費金額以現場丈量為主)</span>";
-                }
-
-            }
+        if (fee1 > fee2) {
+           fee = fee1;
         } else {
+           fee = fee2;
+        }
 
-            if (isNaN(volume)) {
-
-                fee = weight * 550;
-
-                if( weight >= 100 ){
-                    document.getElementById("cal_result").innerHTML = "運費金額粗估為 台幣" + FormatNumber(fee) + "元 <span style='color: red;'> (寄貨量 100 公斤以上，請來電運費另有優惠)</span>";
-                }
-                else{
-                    document.getElementById("cal_result").innerHTML = "運費金額粗估為 台幣" + FormatNumber(fee) + "元 <span style='color: red;'> (實際收費金額以現場丈量為主)</span>";
-                }
-
-            } else {
-
-                var fee1 = 0.00;
-                var fee2 = 0.00;
-
-                volume = volume1 * volume2 * volume3 / 6000;
-                fee1 = volume * 550;
-                fee2 = weight * 550;
-
-                if (fee1 > fee2) {
-                    fee = fee1;
-                } else {
-                    fee = fee2;
-                }
-
-                if( fee/550.0 >= 100 ){
-                    document.getElementById("cal_result").innerHTML = "運費金額粗估為 台幣" + FormatNumber(fee) + "元 <span style='color: red;'> (寄貨量 100 公斤以上，請來電運費另有優惠)</span>";
-                }
-                else{
-                    document.getElementById("cal_result").innerHTML = "運費金額粗估為 台幣" + FormatNumber(fee) + "元 <span style='color: red;'> (實際收費金額以現場丈量為主)</span>";
-                }
-            }
+        if( fee/550.0 >= 100 ){
+           document.getElementById("cal_result").innerHTML = "運費金額粗估為 台幣" + FormatNumber(fee) + "元 <span style='color: red;'> (寄貨量 100 公斤以上，請來電運費另有優惠)</span>";
+        }
+        else{
+           document.getElementById("cal_result").innerHTML = "運費金額粗估為 台幣" + FormatNumber(fee) + "元 <span style='color: red;'> (實際收費金額以現場丈量為主)</span>";
         }
 
         dataLayer.push({
